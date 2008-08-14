@@ -1,0 +1,5 @@
+CREATE LOGIN vcf
+    WITH PASSWORD = 'vcf2008';
+USE VCF;
+CREATE USER vcf;
+GO 
