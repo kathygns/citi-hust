@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BeneficiaryHome.aspx.cs" Inherits="BeneficiaryHOme" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DataInit.aspx.cs" Inherits="DataInit" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,8 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
-    </div>
+        <br />
+        <br />
+        &nbsp;<asp:Button ID="ProjectButton" runat="server" Text="project" OnClick="ProjectButton_Click" /></div>
     </form>
 </body>
 </html>
