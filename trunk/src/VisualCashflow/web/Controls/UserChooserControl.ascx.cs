@@ -9,26 +9,39 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
+using BLL;
+using System.Text.RegularExpressions;
 public partial class Controls_UserChooserControl : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
-    /*
+    
     #region Attributes
     public int UserID
     {
         get
         {
-            try { return Convert.ToInt32(this.TextBox_CurrentPageIndex.Text); }
-            catch { return 1; }
+            Regex r = new Regex(@".+<(.+)>");
+            string tmp=r.Match(this.UserTextBox.Text).Groups[1].Value;//得到UserName
+
+            
+            BLL.VCFDataSet.UserDataTable udt= new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetUserByUserName(tmp);
+            if(udt.Count==1)
+                return udt[0].UserID;
+            else
+                return -1;
         }
         set
         {
-            this.bindData(value);
+            BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetUserByUserID(value);
+            if(udt.Count==1)
+            {
+                this.UserTextBox.Text=udt[0].RealName + "<"+udt[0].UserName+">";
+            }
         }
     }
     #endregion
-    */
+    
 }

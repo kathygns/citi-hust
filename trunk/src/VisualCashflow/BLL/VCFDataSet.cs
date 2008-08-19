@@ -9,8 +9,8 @@
             {
                 admin=0,
                 Manager,
+                Beneficiary,
                 Donor,
-                Beneficiary
             }
         }
     }

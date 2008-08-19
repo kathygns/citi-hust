@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default"  ValidateRequest="false"%>
 
 <%@ Register Src="Controls/UserChooserControl.ascx" TagName="UserChooserControl"
     TagPrefix="uc1" %>
@@ -17,6 +17,9 @@
     <div>
         <uc1:UserChooserControl id="UserChooserControl1" runat="server">
         </uc1:UserChooserControl>&nbsp;</div>
+        
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>
