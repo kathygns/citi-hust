@@ -12,6 +12,13 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+            return;
+        this.UserChooserControl1.UserID = 0;
+    }
 
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        this.TextBox1.Text = Convert.ToString(this.UserChooserControl1.UserID);
     }
 }

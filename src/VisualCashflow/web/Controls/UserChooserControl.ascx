@@ -2,17 +2,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 
 
-
-<ajax:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-</ajax:ToolkitScriptManager>
-
     
-    <asp:TextBox runat="server" ID="myTextBox" Width="300" autocomplete="off" />
+    <asp:TextBox runat="server" ID="UserTextBox" Width="245px" autocomplete="off" />
             <ajax:AutoCompleteExtender
                 runat="server" 
                 BehaviorID="AutoCompleteEx"
                 ID="autoComplete1" 
-                TargetControlID="myTextBox"
+                TargetControlID="UserTextBox"
                 ServicePath="/web/WebService/UserNameSuggestionService.asmx" 
                 
                 

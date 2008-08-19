@@ -48,7 +48,7 @@ public class UserNameSuggestionService : System.Web.Services.WebService
 
         for (int i = 0; i < udt.Count; i++)
         {
-            items.Add(udt[i].RealName + "("+udt[i].UserName+")");
+            items.Add(udt[i].RealName + "<"+udt[i].UserName+">");
         }
         return items.ToArray();
 
