@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "D:\...\web\", "web\", "{B9BBA081-E3FF-42F8-BC62-9B6D08F9FA46}"
 	ProjectSection(WebsiteProperties) = preProject
+		ProjectReferences = "{D859BE19-BABF-461C-885D-639C6A838F0F}|BLL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/web"
 		Debug.AspNetCompiler.PhysicalPath = "web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\web\"
@@ -20,6 +21,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "D:\...\web\", "web\", "{B9B
 		VWDPort = "1114"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{D859BE19-BABF-461C-885D-639C6A838F0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +44,16 @@ Global
 		{B9BBA081-E3FF-42F8-BC62-9B6D08F9FA46}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{B9BBA081-E3FF-42F8-BC62-9B6D08F9FA46}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{B9BBA081-E3FF-42F8-BC62-9B6D08F9FA46}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D859BE19-BABF-461C-885D-639C6A838F0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
