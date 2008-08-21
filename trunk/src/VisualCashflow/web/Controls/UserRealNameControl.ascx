@@ -32,16 +32,23 @@ function addNode(el){
 2.  dojo引用和dojo.require("dijit.Tooltip");
 
 
+style="display: none;" 
+        
+         CssClass="dijitTooltipDialog dijitTooltipABLeft dijitTooltipAbove"
+        
+
 -->
-
-
 
     <asp:Label ID="NameLabel" runat="server" Text="" ForeColor="Blue" ></asp:Label>
 
 
 
 <asp:Panel ID="Panel1" runat="server" 
-        style="display: none;" 
+        
+style="display: none;" 
+        
+         CssClass="dijitTooltipDialog dijitTooltipABLeft dijitAlignClient"
+                 
         connectid="" 
         dojotype="dijit.Tooltip" 
         widgetid="dijit_Tooltip_0"
