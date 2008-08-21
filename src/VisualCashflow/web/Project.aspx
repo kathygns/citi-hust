@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Project.aspx.cs" Inherits="Project"
     ValidateRequest="false" %>
 
+<%@ Register Src="Controls/CommonControl.ascx" TagName="CommonControl" TagPrefix="uc3" %>
+
 <%@ Register Src="Controls/UserRealNameControl.ascx" TagName="UserRealNameControl"
     TagPrefix="uc2" %>
 
@@ -11,8 +13,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>项目管理</title>
+    
+    <link href="/web/css/ajaxControlToolkit.css" rel="stylesheet" type="text/css" />
+    
+        
+    <style type="text/css">
+        @import "/web/js/dojo1.1.1/dijit/themes/tundra/tundra.css";
+        @import "/web/js/dojo1.1.1/dojo/resources/dojo.css"
+    </style>
+    
+    <script type="text/javascript" src="/web/js/dojo1.1.1/dojo/dojo.js"
+	    djConfig="parseOnLoad:true, isDebug:true"></script>
+	    
+    <script type="text/javascript">
+        console.log("start");
+        dojo.require("dojo.parser");
+        dojo.require("dijit.Tooltip");
+    </script>
+
+    
 </head>
-<body>
+<body class="tundra">
     <form id="form1" runat="server">
         <div>
             <div class="talbeHeader">
@@ -20,6 +41,7 @@
             <div class="table">
                 <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
                 </cc1:ToolkitScriptManager>
+                <uc3:CommonControl ID="CommonControl1" runat="server" />
                 <asp:ObjectDataSource ID="ProjectDataSource" runat="server" DeleteMethod="DeleteByProjectID"
                     InsertMethod="AddProject" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData"
                     TypeName="BLL.VCFDataSetTableAdapters.ProjectTableAdapter" UpdateMethod="UpdateByProjectID">
@@ -52,6 +74,12 @@
                         <asp:BoundField DataField="ManagerID" HeaderText="ManagerID" SortExpression="ManagerID" />
                         <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" SortExpression="CreateDate" />
                         <asp:CheckBoxField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" />
+                        
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("IsActive") %> '></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 <br />

@@ -35,6 +35,8 @@ namespace BLL {
         
         private ProjectDataTable tableProject;
         
+        private V_FormatedUserDataTable tableV_FormatedUser;
+        
         private System.Data.DataRelation relationFK_User_User;
         
         private System.Data.DataRelation relationFK_Distribution_User;
@@ -96,6 +98,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["Project"] != null)) {
                     base.Tables.Add(new ProjectDataTable(ds.Tables["Project"]));
+                }
+                if ((ds.Tables["V_FormatedUser"] != null)) {
+                    base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -166,6 +171,15 @@ namespace BLL {
         public ProjectDataTable Project {
             get {
                 return this.tableProject;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public V_FormatedUserDataTable V_FormatedUser {
+            get {
+                return this.tableV_FormatedUser;
             }
         }
         
@@ -246,6 +260,9 @@ namespace BLL {
                 if ((ds.Tables["Project"] != null)) {
                     base.Tables.Add(new ProjectDataTable(ds.Tables["Project"]));
                 }
+                if ((ds.Tables["V_FormatedUser"] != null)) {
+                    base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -312,6 +329,12 @@ namespace BLL {
                     this.tableProject.InitVars();
                 }
             }
+            this.tableV_FormatedUser = ((V_FormatedUserDataTable)(base.Tables["V_FormatedUser"]));
+            if ((initTable == true)) {
+                if ((this.tableV_FormatedUser != null)) {
+                    this.tableV_FormatedUser.InitVars();
+                }
+            }
             this.relationFK_User_User = this.Relations["FK_User_User"];
             this.relationFK_Distribution_User = this.Relations["FK_Distribution_User"];
             this.relationFK_Distribution_User1 = this.Relations["FK_Distribution_User1"];
@@ -342,6 +365,8 @@ namespace BLL {
             base.Tables.Add(this.tableUser);
             this.tableProject = new ProjectDataTable();
             base.Tables.Add(this.tableProject);
+            this.tableV_FormatedUser = new V_FormatedUserDataTable();
+            base.Tables.Add(this.tableV_FormatedUser);
             this.relationFK_User_User = new System.Data.DataRelation("FK_User_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUser.FatherUserIDColumn}, false);
@@ -411,6 +436,11 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeV_FormatedUser() {
+            return false;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -441,6 +471,8 @@ namespace BLL {
         public delegate void UserRowChangeEventHandler(object sender, UserRowChangeEvent e);
         
         public delegate void ProjectRowChangeEventHandler(object sender, ProjectRowChangeEvent e);
+        
+        public delegate void V_FormatedUserRowChangeEventHandler(object sender, V_FormatedUserRowChangeEvent e);
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [System.Serializable()]
@@ -2229,6 +2261,461 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class V_FormatedUserDataTable : System.Data.DataTable, System.Collections.IEnumerable {
+            
+            private System.Data.DataColumn columnUserID;
+            
+            private System.Data.DataColumn columnUserName;
+            
+            private System.Data.DataColumn columnPhoto;
+            
+            private System.Data.DataColumn columnRegDate;
+            
+            private System.Data.DataColumn columnRealName;
+            
+            private System.Data.DataColumn columnAge;
+            
+            private System.Data.DataColumn columnTel;
+            
+            private System.Data.DataColumn columnEmail;
+            
+            private System.Data.DataColumn columnAddress;
+            
+            private System.Data.DataColumn columnComment;
+            
+            private System.Data.DataColumn columnBankAccount;
+            
+            private System.Data.DataColumn columnIdentityCard;
+            
+            private System.Data.DataColumn columnPosition;
+            
+            private System.Data.DataColumn columnFatherUserID;
+            
+            private System.Data.DataColumn columnSex;
+            
+            private System.Data.DataColumn columnRole;
+            
+            private System.Data.DataColumn columnFatherUserName;
+            
+            private System.Data.DataColumn columnFatherRealName;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserDataTable() {
+                this.TableName = "V_FormatedUser";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_FormatedUserDataTable(System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected V_FormatedUserDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn UserIDColumn {
+                get {
+                    return this.columnUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn UserNameColumn {
+                get {
+                    return this.columnUserName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn PhotoColumn {
+                get {
+                    return this.columnPhoto;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn RegDateColumn {
+                get {
+                    return this.columnRegDate;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn RealNameColumn {
+                get {
+                    return this.columnRealName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn AgeColumn {
+                get {
+                    return this.columnAge;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn TelColumn {
+                get {
+                    return this.columnTel;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn AddressColumn {
+                get {
+                    return this.columnAddress;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn CommentColumn {
+                get {
+                    return this.columnComment;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn BankAccountColumn {
+                get {
+                    return this.columnBankAccount;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn IdentityCardColumn {
+                get {
+                    return this.columnIdentityCard;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn PositionColumn {
+                get {
+                    return this.columnPosition;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FatherUserIDColumn {
+                get {
+                    return this.columnFatherUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn SexColumn {
+                get {
+                    return this.columnSex;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn RoleColumn {
+                get {
+                    return this.columnRole;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FatherUserNameColumn {
+                get {
+                    return this.columnFatherUserName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FatherRealNameColumn {
+                get {
+                    return this.columnFatherRealName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserRow this[int index] {
+                get {
+                    return ((V_FormatedUserRow)(this.Rows[index]));
+                }
+            }
+            
+            public event V_FormatedUserRowChangeEventHandler V_FormatedUserRowChanging;
+            
+            public event V_FormatedUserRowChangeEventHandler V_FormatedUserRowChanged;
+            
+            public event V_FormatedUserRowChangeEventHandler V_FormatedUserRowDeleting;
+            
+            public event V_FormatedUserRowChangeEventHandler V_FormatedUserRowDeleted;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddV_FormatedUserRow(V_FormatedUserRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserRow AddV_FormatedUserRow(
+                        int UserID, 
+                        string UserName, 
+                        string Photo, 
+                        System.DateTime RegDate, 
+                        string RealName, 
+                        byte Age, 
+                        string Tel, 
+                        string Email, 
+                        string Address, 
+                        string Comment, 
+                        string BankAccount, 
+                        string IdentityCard, 
+                        string Position, 
+                        int FatherUserID, 
+                        string Sex, 
+                        string Role, 
+                        string FatherUserName, 
+                        string FatherRealName) {
+                V_FormatedUserRow rowV_FormatedUserRow = ((V_FormatedUserRow)(this.NewRow()));
+                rowV_FormatedUserRow.ItemArray = new object[] {
+                        UserID,
+                        UserName,
+                        Photo,
+                        RegDate,
+                        RealName,
+                        Age,
+                        Tel,
+                        Email,
+                        Address,
+                        Comment,
+                        BankAccount,
+                        IdentityCard,
+                        Position,
+                        FatherUserID,
+                        Sex,
+                        Role,
+                        FatherUserName,
+                        FatherRealName};
+                this.Rows.Add(rowV_FormatedUserRow);
+                return rowV_FormatedUserRow;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override System.Data.DataTable Clone() {
+                V_FormatedUserDataTable cln = ((V_FormatedUserDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataTable CreateInstance() {
+                return new V_FormatedUserDataTable();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnUserID = base.Columns["UserID"];
+                this.columnUserName = base.Columns["UserName"];
+                this.columnPhoto = base.Columns["Photo"];
+                this.columnRegDate = base.Columns["RegDate"];
+                this.columnRealName = base.Columns["RealName"];
+                this.columnAge = base.Columns["Age"];
+                this.columnTel = base.Columns["Tel"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnAddress = base.Columns["Address"];
+                this.columnComment = base.Columns["Comment"];
+                this.columnBankAccount = base.Columns["BankAccount"];
+                this.columnIdentityCard = base.Columns["IdentityCard"];
+                this.columnPosition = base.Columns["Position"];
+                this.columnFatherUserID = base.Columns["FatherUserID"];
+                this.columnSex = base.Columns["Sex"];
+                this.columnRole = base.Columns["Role"];
+                this.columnFatherUserName = base.Columns["FatherUserName"];
+                this.columnFatherRealName = base.Columns["FatherRealName"];
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnUserID = new System.Data.DataColumn("UserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserID);
+                this.columnUserName = new System.Data.DataColumn("UserName", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserName);
+                this.columnPhoto = new System.Data.DataColumn("Photo", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhoto);
+                this.columnRegDate = new System.Data.DataColumn("RegDate", typeof(System.DateTime), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRegDate);
+                this.columnRealName = new System.Data.DataColumn("RealName", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRealName);
+                this.columnAge = new System.Data.DataColumn("Age", typeof(byte), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAge);
+                this.columnTel = new System.Data.DataColumn("Tel", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTel);
+                this.columnEmail = new System.Data.DataColumn("Email", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnAddress = new System.Data.DataColumn("Address", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddress);
+                this.columnComment = new System.Data.DataColumn("Comment", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComment);
+                this.columnBankAccount = new System.Data.DataColumn("BankAccount", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBankAccount);
+                this.columnIdentityCard = new System.Data.DataColumn("IdentityCard", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentityCard);
+                this.columnPosition = new System.Data.DataColumn("Position", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPosition);
+                this.columnFatherUserID = new System.Data.DataColumn("FatherUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFatherUserID);
+                this.columnSex = new System.Data.DataColumn("Sex", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSex);
+                this.columnRole = new System.Data.DataColumn("Role", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRole);
+                this.columnFatherUserName = new System.Data.DataColumn("FatherUserName", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFatherUserName);
+                this.columnFatherRealName = new System.Data.DataColumn("FatherRealName", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFatherRealName);
+                this.columnUserID.AllowDBNull = false;
+                this.columnUserName.AllowDBNull = false;
+                this.columnUserName.MaxLength = 50;
+                this.columnPhoto.MaxLength = 100;
+                this.columnRegDate.AllowDBNull = false;
+                this.columnRealName.AllowDBNull = false;
+                this.columnRealName.MaxLength = 50;
+                this.columnTel.MaxLength = 15;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 50;
+                this.columnAddress.MaxLength = 100;
+                this.columnComment.MaxLength = 2147483647;
+                this.columnBankAccount.AllowDBNull = false;
+                this.columnBankAccount.MaxLength = 50;
+                this.columnIdentityCard.AllowDBNull = false;
+                this.columnIdentityCard.MaxLength = 50;
+                this.columnPosition.MaxLength = 100;
+                this.columnSex.ReadOnly = true;
+                this.columnSex.MaxLength = 2;
+                this.columnRole.ReadOnly = true;
+                this.columnRole.MaxLength = 10;
+                this.columnFatherUserName.AllowDBNull = false;
+                this.columnFatherUserName.MaxLength = 50;
+                this.columnFatherRealName.AllowDBNull = false;
+                this.columnFatherRealName.MaxLength = 50;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserRow NewV_FormatedUserRow() {
+                return ((V_FormatedUserRow)(this.NewRow()));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
+                return new V_FormatedUserRow(builder);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Type GetRowType() {
+                return typeof(V_FormatedUserRow);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.V_FormatedUserRowChanged != null)) {
+                    this.V_FormatedUserRowChanged(this, new V_FormatedUserRowChangeEvent(((V_FormatedUserRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.V_FormatedUserRowChanging != null)) {
+                    this.V_FormatedUserRowChanging(this, new V_FormatedUserRowChangeEvent(((V_FormatedUserRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.V_FormatedUserRowDeleted != null)) {
+                    this.V_FormatedUserRowDeleted(this, new V_FormatedUserRowChangeEvent(((V_FormatedUserRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.V_FormatedUserRowDeleting != null)) {
+                    this.V_FormatedUserRowDeleting(this, new V_FormatedUserRowChangeEvent(((V_FormatedUserRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveV_FormatedUserRow(V_FormatedUserRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
+                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
+                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
+                VCFDataSet ds = new VCFDataSet();
+                xs.Add(ds.GetSchemaSerializable());
+                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "V_FormatedUserDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                return type;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class CityRow : System.Data.DataRow {
             
             private CityDataTable tableCity;
@@ -3066,6 +3553,333 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class V_FormatedUserRow : System.Data.DataRow {
+            
+            private V_FormatedUserDataTable tableV_FormatedUser;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_FormatedUserRow(System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableV_FormatedUser = ((V_FormatedUserDataTable)(this.Table));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int UserID {
+                get {
+                    return ((int)(this[this.tableV_FormatedUser.UserIDColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.UserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string UserName {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.UserNameColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.UserNameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Photo {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.PhotoColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Photo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.PhotoColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime RegDate {
+                get {
+                    return ((System.DateTime)(this[this.tableV_FormatedUser.RegDateColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.RegDateColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string RealName {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.RealNameColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.RealNameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public byte Age {
+                get {
+                    try {
+                        return ((byte)(this[this.tableV_FormatedUser.AgeColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Age”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.AgeColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Tel {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.TelColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Tel”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.TelColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Email {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.EmailColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.EmailColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Address {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.AddressColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Address”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.AddressColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Comment {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.CommentColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Comment”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.CommentColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string BankAccount {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.BankAccountColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.BankAccountColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string IdentityCard {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.IdentityCardColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.IdentityCardColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Position {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.PositionColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Position”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.PositionColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int FatherUserID {
+                get {
+                    try {
+                        return ((int)(this[this.tableV_FormatedUser.FatherUserIDColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“FatherUserID”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.FatherUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Sex {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.SexColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Sex”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.SexColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Role {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_FormatedUser.RoleColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_FormatedUser”中列“Role”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_FormatedUser.RoleColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FatherUserName {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.FatherUserNameColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.FatherUserNameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FatherRealName {
+                get {
+                    return ((string)(this[this.tableV_FormatedUser.FatherRealNameColumn]));
+                }
+                set {
+                    this[this.tableV_FormatedUser.FatherRealNameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPhotoNull() {
+                return this.IsNull(this.tableV_FormatedUser.PhotoColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPhotoNull() {
+                this[this.tableV_FormatedUser.PhotoColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsAgeNull() {
+                return this.IsNull(this.tableV_FormatedUser.AgeColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetAgeNull() {
+                this[this.tableV_FormatedUser.AgeColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTelNull() {
+                return this.IsNull(this.tableV_FormatedUser.TelColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTelNull() {
+                this[this.tableV_FormatedUser.TelColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsAddressNull() {
+                return this.IsNull(this.tableV_FormatedUser.AddressColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetAddressNull() {
+                this[this.tableV_FormatedUser.AddressColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCommentNull() {
+                return this.IsNull(this.tableV_FormatedUser.CommentColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCommentNull() {
+                this[this.tableV_FormatedUser.CommentColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPositionNull() {
+                return this.IsNull(this.tableV_FormatedUser.PositionColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPositionNull() {
+                this[this.tableV_FormatedUser.PositionColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFatherUserIDNull() {
+                return this.IsNull(this.tableV_FormatedUser.FatherUserIDColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFatherUserIDNull() {
+                this[this.tableV_FormatedUser.FatherUserIDColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSexNull() {
+                return this.IsNull(this.tableV_FormatedUser.SexColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSexNull() {
+                this[this.tableV_FormatedUser.SexColumn] = System.Convert.DBNull;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsRoleNull() {
+                return this.IsNull(this.tableV_FormatedUser.RoleColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetRoleNull() {
+                this[this.tableV_FormatedUser.RoleColumn] = System.Convert.DBNull;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public class CityRowChangeEvent : System.EventArgs {
             
             private CityRow eventRow;
@@ -3220,6 +4034,34 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProjectRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class V_FormatedUserRowChangeEvent : System.EventArgs {
+            
+            private V_FormatedUserRow eventRow;
+            
+            private System.Data.DataRowAction eventAction;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserRowChangeEvent(V_FormatedUserRow row, System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_FormatedUserRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4703,7 +5545,10 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
             this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Count", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * FROM dbo.[User]\r\nwhere\r\n(UserID=@UserID)";
+            this._commandCollection[4].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, \r\n " +
+                "     RegDate, RealName, Sex, Age, Tel, Email, Address, Comment, BankAccount, \r\n " +
+                "     IdentityCard, Position, FatherUserID\r\nFROM [User]\r\nWHERE (UserID = @UserID)" +
+                "";
             this._commandCollection[4].CommandType = System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
@@ -6022,6 +6867,170 @@ SELECT ProjectID, Name, Discription, ManagerID, CreateDate, IsActive FROM Projec
                 }
             }
             return returnValue;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.ToolboxItem(true)]
+    [System.ComponentModel.DataObjectAttribute(true)]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class V_FormatedUserTableAdapter : System.ComponentModel.Component {
+        
+        private System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private System.Data.SqlClient.SqlConnection _connection;
+        
+        private System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public V_FormatedUserTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
+            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "V_FormatedUser";
+            tableMapping.ColumnMappings.Add("UserID", "UserID");
+            tableMapping.ColumnMappings.Add("UserName", "UserName");
+            tableMapping.ColumnMappings.Add("Photo", "Photo");
+            tableMapping.ColumnMappings.Add("RegDate", "RegDate");
+            tableMapping.ColumnMappings.Add("RealName", "RealName");
+            tableMapping.ColumnMappings.Add("Age", "Age");
+            tableMapping.ColumnMappings.Add("Tel", "Tel");
+            tableMapping.ColumnMappings.Add("Email", "Email");
+            tableMapping.ColumnMappings.Add("Address", "Address");
+            tableMapping.ColumnMappings.Add("Comment", "Comment");
+            tableMapping.ColumnMappings.Add("BankAccount", "BankAccount");
+            tableMapping.ColumnMappings.Add("IdentityCard", "IdentityCard");
+            tableMapping.ColumnMappings.Add("Position", "Position");
+            tableMapping.ColumnMappings.Add("FatherUserID", "FatherUserID");
+            tableMapping.ColumnMappings.Add("Sex", "Sex");
+            tableMapping.ColumnMappings.Add("Role", "Role");
+            tableMapping.ColumnMappings.Add("FatherUserName", "FatherUserName");
+            tableMapping.ColumnMappings.Add("FatherRealName", "FatherRealName");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
+                "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, Role, FatherUserNam" +
+                "e, FatherRealName FROM dbo.V_FormatedUser";
+            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
+                "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, Role, FatherUserNam" +
+                "e, FatherRealName FROM dbo.V_FormatedUser where UserID=@UserID";
+            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(VCFDataSet.V_FormatedUserDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual VCFDataSet.V_FormatedUserDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.V_FormatedUserDataTable GetUserByUserID(int UserID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
+            VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
 }
