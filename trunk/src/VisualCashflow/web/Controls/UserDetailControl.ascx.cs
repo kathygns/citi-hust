@@ -9,32 +9,28 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-
-
-public partial class Controls_UserRealNameControl : System.Web.UI.UserControl
+using BLL;
+public partial class Controls_UserDetailControl : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.Panel1.Attributes.Add("connectid", this.NameLabel.ClientID);
-
-        //this.NameLabel.Attributes.Add("onmouseover", "addNode(this)");
-
 
     }
+
 
     #region Attributes
     public int UserID
     {
         set
         {
-            BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetUserByUserID(value);
+            BLL.VCFDataSet.V_FormatedUserDataTable udt = new BLL.VCFDataSetTableAdapters.V_FormatedUserTableAdapter().GetUserByUserID(value);
             if (udt.Count == 1)
             {
-                this.NameLabel.Text = udt[0].RealName + "<" + udt[0].UserName + ">";
-                this.UserDetailControl1.UserID = value;
+                this.FormView1.DataSource = udt;
+                this.FormView1.DataBind();
             }
         }
     }
     #endregion
-
+    
 }
