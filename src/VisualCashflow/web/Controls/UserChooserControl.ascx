@@ -4,7 +4,18 @@
 
     
     <asp:TextBox runat="server" ID="UserTextBox" Width="245px" autocomplete="off" />
-            <ajax:AutoCompleteExtender
+    
+    
+<ajax:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
+    
+    TargetControlID="UserTextBox" 
+    WatermarkText="请输入姓名"
+    WatermarkCssClass="watermarked"
+>
+</ajax:TextBoxWatermarkExtender>
+
+
+<ajax:AutoCompleteExtender
                 runat="server" 
                 BehaviorID="AutoCompleteEx"
                 ID="autoComplete1" 
