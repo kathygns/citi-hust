@@ -1,0 +1,17 @@
+#summary abc
+
+= Introduction =
+
+由于dojo代码比较大，不好上传，
+
+= Details =
+
+由于dojo代码比较大，不好上传，
+
+大家在自己本地把dojo-release-1.1.1.tar.gz解压到：\svn\src\VisualCashflow\web\js\dojo1.1.1目录，目录树如下：
+├─App_Code
+├─images
+│  └─icons
+├─js
+│  └─dojo1.1.1
+│      ├─dijit
