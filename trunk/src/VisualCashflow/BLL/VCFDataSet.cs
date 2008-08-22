@@ -7,10 +7,15 @@
         {
             public enum UserRoles
             {
-                admin=0,
+                Admin=0,
                 Manager,
                 Beneficiary,
                 Donor,
+            }
+
+            public static string FormatUserName_RealName(UserRow u)
+            {
+                return u.RealName + "[" + u.UserName + "]";
             }
         }
     }

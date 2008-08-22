@@ -2,12 +2,17 @@
     
     <style type="text/css">
     
-    
+        /*my css*/
+        @import "/web/css/g.css";
+        
     
         /*ajaxControlToolkit*/
         @import "/web/css/ajaxControlToolkit.css";
+        
         /*dojo:*/
         @import "/web/js/dojo1.1.1/dijit/themes/tundra/tundra.css";
+        @import "/web/js/dojo1.1.1/dijit/themes/soria/soria.css";
+        
         @import "/web/js/dojo1.1.1/dojo/resources/dojo.css";
     </style>
 

@@ -23,9 +23,10 @@
 </head>
 <body class="tundra">
 
-<button dojoType="dijit.form.Button" id="helloButton">
+<button dojoType="dijit.form.Button" id="helloButton" >
         Hello World!
-        <script type="dojo/method" event="onMouserover">
+        <script type="dojo/method" event="onFocus">
+        dojo.log("abc");
            alert('You pressed the button');
         </script>
     </button>
@@ -33,7 +34,7 @@
     
     
 <div dojoType="dijit.form.DropDownButton">
-        <span>Change Password</span>
+        <span>show user 0 detail</span>
         
         
         <script type="dojo/method" event="onClick">

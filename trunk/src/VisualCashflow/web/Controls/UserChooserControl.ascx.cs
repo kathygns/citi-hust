@@ -38,7 +38,7 @@ public partial class Controls_UserChooserControl : System.Web.UI.UserControl
             BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetUserByUserID(value);
             if(udt.Count==1)
             {
-                this.UserTextBox.Text=udt[0].RealName + "<"+udt[0].UserName+">";
+                this.UserTextBox.Text = VCFDataSet.UserDataTable.FormatUserName_RealName(udt[0]);
             }
         }
     }

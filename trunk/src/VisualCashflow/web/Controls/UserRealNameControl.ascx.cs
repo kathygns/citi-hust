@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
+using BLL;
 
 
 public partial class Controls_UserRealNameControl : System.Web.UI.UserControl
@@ -30,7 +30,7 @@ public partial class Controls_UserRealNameControl : System.Web.UI.UserControl
             BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetUserByUserID(value);
             if (udt.Count == 1)
             {
-                this.NameLabel.Text = udt[0].RealName + "<" + udt[0].UserName + ">";
+                this.NameLabel.Text = VCFDataSet.UserDataTable.FormatUserName_RealName(udt[0]);
                 this.UserDetailControl1.UserID = value;
             }
         }
