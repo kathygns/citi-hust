@@ -13,6 +13,7 @@ public partial class Project : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        int x = new App_Code.SessionManager(this).Admin.Age;//check if it's admin
 
     }
 }

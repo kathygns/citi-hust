@@ -9,10 +9,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class Error : System.Web.UI.Page
+public partial class Controls_HeaderControl : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ErrorMsg.Text = new App_Code.SessionManager(this).Message;
+        BLL.VCFDataSet.UserRow u=new App_Code.SessionManager(this.Page).User;
+        UserNameLabel.Text = BLL.VCFDataSet.UserDataTable.FormatUserName_RealName(u);
     }
 }
