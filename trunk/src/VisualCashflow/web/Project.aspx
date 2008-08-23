@@ -3,7 +3,7 @@
 
 <%@ Register Src="Controls/HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc4" %>
 
-<%@ Register Src="Controls/CommonControl.ascx" TagName="CommonControl" TagPrefix="uc3" %>
+
 
 <%@ Register Src="Controls/UserRealNameControl.ascx" TagName="UserRealNameControl"
     TagPrefix="uc2" %>
@@ -44,7 +44,7 @@
                         <asp:Parameter Name="Original_ProjectID" Type="Int32" />
                     </UpdateParameters>
                 </asp:ObjectDataSource>
-                <uc3:CommonControl ID="CommonControl1" runat="server" />
+                
                 &nbsp;
                 &nbsp;&nbsp;
                 <uc4:HeaderControl ID="HeaderControl1" runat="server" />

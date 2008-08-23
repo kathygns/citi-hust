@@ -1,8 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CommonControl.ascx.cs" Inherits="Controls_CommonControl" %>
     
+    
+    <!-- 
+    commonContorl的代码已经移入HeaderControl里面了。
+    
+    -->
     <style type="text/css">
     
-        /*my css*/
+        /*my css
+        
+        */
         @import "/web/css/g.css";
         
     
