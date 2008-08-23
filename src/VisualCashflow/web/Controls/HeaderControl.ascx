@@ -1,4 +1,34 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HeaderControl.ascx.cs" Inherits="Controls_HeaderControl" %>
+    <style type="text/css">
+    
+        /*my css
+        
+        */
+        @import "/web/css/g.css";
+        
+    
+        /*ajaxControlToolkit*/
+        @import "/web/css/ajaxControlToolkit.css";
+        
+        /*dojo:*/
+        @import "/web/js/dojo1.1.1/dijit/themes/tundra/tundra.css";
+        @import "/web/js/dojo1.1.1/dijit/themes/soria/soria.css";
+        
+        @import "/web/js/dojo1.1.1/dojo/resources/dojo.css";
+    </style>
+
+    
+    <script type="text/javascript" src="/web/js/dojo1.1.1/dojo/dojo.js"
+	    djConfig="parseOnLoad:true, isDebug:true"></script>
+	    
+    <script type="text/javascript">
+        console.log("start");
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.TextBox");
+        dojo.require("dijit.Tooltip");
+    </script>
+
+
 <div id="header" class="header">
 
 
@@ -21,7 +51,7 @@
 |
 <a href="http://www.google.com/history/?hl=en">关于</a>
 |
-<asp:HyperLink ID="LogOut" runat="server">退出</asp:HyperLink>
+<asp:HyperLink ID="LogOut" runat="server" NavigateUrl="/web/Logout.aspx">退出</asp:HyperLink>
 </nobr>
 </div>
 

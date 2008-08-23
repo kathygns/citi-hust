@@ -25,8 +25,6 @@ namespace BLL {
         
         private CityDataTable tableCity;
         
-        private DistributionDataTable tableDistribution;
-        
         private DonationDataTable tableDonation;
         
         private UserRelationShipDataTable tableUserRelationShip;
@@ -37,11 +35,9 @@ namespace BLL {
         
         private V_FormatedUserDataTable tableV_FormatedUser;
         
+        private DistributionDataTable tableDistribution;
+        
         private System.Data.DataRelation relationFK_User_User;
-        
-        private System.Data.DataRelation relationFK_Distribution_User;
-        
-        private System.Data.DataRelation relationFK_Distribution_User1;
         
         private System.Data.DataRelation relationFK_Donation_User;
         
@@ -49,11 +45,15 @@ namespace BLL {
         
         private System.Data.DataRelation relationFK_UserRelationShip_User1;
         
-        private System.Data.DataRelation relationFK_Distribution_Project;
-        
         private System.Data.DataRelation relationFK_Donation_Project;
         
         private System.Data.DataRelation relationFK_Project_Project;
+        
+        private System.Data.DataRelation relationFK_Distribution_Project;
+        
+        private System.Data.DataRelation relationFK_Distribution_User;
+        
+        private System.Data.DataRelation relationFK_Distribution_User1;
         
         private System.Data.SchemaSerializationMode _schemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -84,9 +84,6 @@ namespace BLL {
                 if ((ds.Tables["City"] != null)) {
                     base.Tables.Add(new CityDataTable(ds.Tables["City"]));
                 }
-                if ((ds.Tables["Distribution"] != null)) {
-                    base.Tables.Add(new DistributionDataTable(ds.Tables["Distribution"]));
-                }
                 if ((ds.Tables["Donation"] != null)) {
                     base.Tables.Add(new DonationDataTable(ds.Tables["Donation"]));
                 }
@@ -101,6 +98,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["V_FormatedUser"] != null)) {
                     base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
+                }
+                if ((ds.Tables["Distribution"] != null)) {
+                    base.Tables.Add(new DistributionDataTable(ds.Tables["Distribution"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -126,15 +126,6 @@ namespace BLL {
         public CityDataTable City {
             get {
                 return this.tableCity;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Browsable(false)]
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DistributionDataTable Distribution {
-            get {
-                return this.tableDistribution;
             }
         }
         
@@ -180,6 +171,15 @@ namespace BLL {
         public V_FormatedUserDataTable V_FormatedUser {
             get {
                 return this.tableV_FormatedUser;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DistributionDataTable Distribution {
+            get {
+                return this.tableDistribution;
             }
         }
         
@@ -245,9 +245,6 @@ namespace BLL {
                 if ((ds.Tables["City"] != null)) {
                     base.Tables.Add(new CityDataTable(ds.Tables["City"]));
                 }
-                if ((ds.Tables["Distribution"] != null)) {
-                    base.Tables.Add(new DistributionDataTable(ds.Tables["Distribution"]));
-                }
                 if ((ds.Tables["Donation"] != null)) {
                     base.Tables.Add(new DonationDataTable(ds.Tables["Donation"]));
                 }
@@ -262,6 +259,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["V_FormatedUser"] != null)) {
                     base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
+                }
+                if ((ds.Tables["Distribution"] != null)) {
+                    base.Tables.Add(new DistributionDataTable(ds.Tables["Distribution"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -299,12 +299,6 @@ namespace BLL {
                     this.tableCity.InitVars();
                 }
             }
-            this.tableDistribution = ((DistributionDataTable)(base.Tables["Distribution"]));
-            if ((initTable == true)) {
-                if ((this.tableDistribution != null)) {
-                    this.tableDistribution.InitVars();
-                }
-            }
             this.tableDonation = ((DonationDataTable)(base.Tables["Donation"]));
             if ((initTable == true)) {
                 if ((this.tableDonation != null)) {
@@ -335,15 +329,21 @@ namespace BLL {
                     this.tableV_FormatedUser.InitVars();
                 }
             }
+            this.tableDistribution = ((DistributionDataTable)(base.Tables["Distribution"]));
+            if ((initTable == true)) {
+                if ((this.tableDistribution != null)) {
+                    this.tableDistribution.InitVars();
+                }
+            }
             this.relationFK_User_User = this.Relations["FK_User_User"];
-            this.relationFK_Distribution_User = this.Relations["FK_Distribution_User"];
-            this.relationFK_Distribution_User1 = this.Relations["FK_Distribution_User1"];
             this.relationFK_Donation_User = this.Relations["FK_Donation_User"];
             this.relationFK_UserRelationShip_User = this.Relations["FK_UserRelationShip_User"];
             this.relationFK_UserRelationShip_User1 = this.Relations["FK_UserRelationShip_User1"];
-            this.relationFK_Distribution_Project = this.Relations["FK_Distribution_Project"];
             this.relationFK_Donation_Project = this.Relations["FK_Donation_Project"];
             this.relationFK_Project_Project = this.Relations["FK_Project_Project"];
+            this.relationFK_Distribution_Project = this.Relations["FK_Distribution_Project"];
+            this.relationFK_Distribution_User = this.Relations["FK_Distribution_User"];
+            this.relationFK_Distribution_User1 = this.Relations["FK_Distribution_User1"];
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -355,8 +355,6 @@ namespace BLL {
             this.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCity = new CityDataTable();
             base.Tables.Add(this.tableCity);
-            this.tableDistribution = new DistributionDataTable();
-            base.Tables.Add(this.tableDistribution);
             this.tableDonation = new DonationDataTable();
             base.Tables.Add(this.tableDonation);
             this.tableUserRelationShip = new UserRelationShipDataTable();
@@ -367,18 +365,12 @@ namespace BLL {
             base.Tables.Add(this.tableProject);
             this.tableV_FormatedUser = new V_FormatedUserDataTable();
             base.Tables.Add(this.tableV_FormatedUser);
+            this.tableDistribution = new DistributionDataTable();
+            base.Tables.Add(this.tableDistribution);
             this.relationFK_User_User = new System.Data.DataRelation("FK_User_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUser.FatherUserIDColumn}, false);
             this.Relations.Add(this.relationFK_User_User);
-            this.relationFK_Distribution_User = new System.Data.DataRelation("FK_Distribution_User", new System.Data.DataColumn[] {
-                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
-                        this.tableDistribution.FromUserIDColumn}, false);
-            this.Relations.Add(this.relationFK_Distribution_User);
-            this.relationFK_Distribution_User1 = new System.Data.DataRelation("FK_Distribution_User1", new System.Data.DataColumn[] {
-                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
-                        this.tableDistribution.ToUserIDColumn}, false);
-            this.Relations.Add(this.relationFK_Distribution_User1);
             this.relationFK_Donation_User = new System.Data.DataRelation("FK_Donation_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableDonation.DonationUserIDColumn}, false);
@@ -391,10 +383,6 @@ namespace BLL {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUserRelationShip.InferiorUserIDColumn}, false);
             this.Relations.Add(this.relationFK_UserRelationShip_User1);
-            this.relationFK_Distribution_Project = new System.Data.DataRelation("FK_Distribution_Project", new System.Data.DataColumn[] {
-                        this.tableProject.ProjectIDColumn}, new System.Data.DataColumn[] {
-                        this.tableDistribution.ProjectIDColumn}, false);
-            this.Relations.Add(this.relationFK_Distribution_Project);
             this.relationFK_Donation_Project = new System.Data.DataRelation("FK_Donation_Project", new System.Data.DataColumn[] {
                         this.tableProject.ProjectIDColumn}, new System.Data.DataColumn[] {
                         this.tableDonation.ProjectIDColumn}, false);
@@ -403,15 +391,22 @@ namespace BLL {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableProject.ManagerIDColumn}, false);
             this.Relations.Add(this.relationFK_Project_Project);
+            this.relationFK_Distribution_Project = new System.Data.DataRelation("FK_Distribution_Project", new System.Data.DataColumn[] {
+                        this.tableProject.ProjectIDColumn}, new System.Data.DataColumn[] {
+                        this.tableDistribution.ProjectIDColumn}, false);
+            this.Relations.Add(this.relationFK_Distribution_Project);
+            this.relationFK_Distribution_User = new System.Data.DataRelation("FK_Distribution_User", new System.Data.DataColumn[] {
+                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
+                        this.tableDistribution.FromUserIDColumn}, false);
+            this.Relations.Add(this.relationFK_Distribution_User);
+            this.relationFK_Distribution_User1 = new System.Data.DataRelation("FK_Distribution_User1", new System.Data.DataColumn[] {
+                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
+                        this.tableDistribution.ToUserIDColumn}, false);
+            this.Relations.Add(this.relationFK_Distribution_User1);
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeCity() {
-            return false;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializeDistribution() {
             return false;
         }
         
@@ -441,6 +436,11 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeDistribution() {
+            return false;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -462,8 +462,6 @@ namespace BLL {
         
         public delegate void CityRowChangeEventHandler(object sender, CityRowChangeEvent e);
         
-        public delegate void DistributionRowChangeEventHandler(object sender, DistributionRowChangeEvent e);
-        
         public delegate void DonationRowChangeEventHandler(object sender, DonationRowChangeEvent e);
         
         public delegate void UserRelationShipRowChangeEventHandler(object sender, UserRelationShipRowChangeEvent e);
@@ -473,6 +471,8 @@ namespace BLL {
         public delegate void ProjectRowChangeEventHandler(object sender, ProjectRowChangeEvent e);
         
         public delegate void V_FormatedUserRowChangeEventHandler(object sender, V_FormatedUserRowChangeEvent e);
+        
+        public delegate void DistributionRowChangeEventHandler(object sender, DistributionRowChangeEvent e);
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [System.Serializable()]
@@ -699,322 +699,6 @@ namespace BLL {
                 System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CityDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                return type;
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        [System.Serializable()]
-        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DistributionDataTable : System.Data.DataTable, System.Collections.IEnumerable {
-            
-            private System.Data.DataColumn columnDistributionID;
-            
-            private System.Data.DataColumn columnFromUserID;
-            
-            private System.Data.DataColumn columnToUserID;
-            
-            private System.Data.DataColumn columnDistributionType;
-            
-            private System.Data.DataColumn columnPurpose;
-            
-            private System.Data.DataColumn columnProjectID;
-            
-            private System.Data.DataColumn columnDistributionDate;
-            
-            private System.Data.DataColumn columnMoney;
-            
-            private System.Data.DataColumn columnFeecbackStatus;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionDataTable() {
-                this.TableName = "Distribution";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal DistributionDataTable(System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected DistributionDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn DistributionIDColumn {
-                get {
-                    return this.columnDistributionID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn FromUserIDColumn {
-                get {
-                    return this.columnFromUserID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn ToUserIDColumn {
-                get {
-                    return this.columnToUserID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn DistributionTypeColumn {
-                get {
-                    return this.columnDistributionType;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn PurposeColumn {
-                get {
-                    return this.columnPurpose;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn ProjectIDColumn {
-                get {
-                    return this.columnProjectID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn DistributionDateColumn {
-                get {
-                    return this.columnDistributionDate;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn MoneyColumn {
-                get {
-                    return this.columnMoney;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn FeecbackStatusColumn {
-                get {
-                    return this.columnFeecbackStatus;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow this[int index] {
-                get {
-                    return ((DistributionRow)(this.Rows[index]));
-                }
-            }
-            
-            public event DistributionRowChangeEventHandler DistributionRowChanging;
-            
-            public event DistributionRowChangeEventHandler DistributionRowChanged;
-            
-            public event DistributionRowChangeEventHandler DistributionRowDeleting;
-            
-            public event DistributionRowChangeEventHandler DistributionRowDeleted;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddDistributionRow(DistributionRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow AddDistributionRow(UserRow parentUserRowByFK_Distribution_User, UserRow parentUserRowByFK_Distribution_User1, byte DistributionType, string Purpose, ProjectRow parentProjectRowByFK_Distribution_Project, System.DateTime DistributionDate, decimal Money, byte FeecbackStatus) {
-                DistributionRow rowDistributionRow = ((DistributionRow)(this.NewRow()));
-                rowDistributionRow.ItemArray = new object[] {
-                        null,
-                        parentUserRowByFK_Distribution_User[0],
-                        parentUserRowByFK_Distribution_User1[0],
-                        DistributionType,
-                        Purpose,
-                        parentProjectRowByFK_Distribution_Project[0],
-                        DistributionDate,
-                        Money,
-                        FeecbackStatus};
-                this.Rows.Add(rowDistributionRow);
-                return rowDistributionRow;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow FindByDistributionID(int DistributionID) {
-                return ((DistributionRow)(this.Rows.Find(new object[] {
-                            DistributionID})));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public virtual System.Collections.IEnumerator GetEnumerator() {
-                return this.Rows.GetEnumerator();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public override System.Data.DataTable Clone() {
-                DistributionDataTable cln = ((DistributionDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Data.DataTable CreateInstance() {
-                return new DistributionDataTable();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal void InitVars() {
-                this.columnDistributionID = base.Columns["DistributionID"];
-                this.columnFromUserID = base.Columns["FromUserID"];
-                this.columnToUserID = base.Columns["ToUserID"];
-                this.columnDistributionType = base.Columns["DistributionType"];
-                this.columnPurpose = base.Columns["Purpose"];
-                this.columnProjectID = base.Columns["ProjectID"];
-                this.columnDistributionDate = base.Columns["DistributionDate"];
-                this.columnMoney = base.Columns["Money"];
-                this.columnFeecbackStatus = base.Columns["FeecbackStatus"];
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            private void InitClass() {
-                this.columnDistributionID = new System.Data.DataColumn("DistributionID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDistributionID);
-                this.columnFromUserID = new System.Data.DataColumn("FromUserID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFromUserID);
-                this.columnToUserID = new System.Data.DataColumn("ToUserID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToUserID);
-                this.columnDistributionType = new System.Data.DataColumn("DistributionType", typeof(byte), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDistributionType);
-                this.columnPurpose = new System.Data.DataColumn("Purpose", typeof(string), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPurpose);
-                this.columnProjectID = new System.Data.DataColumn("ProjectID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProjectID);
-                this.columnDistributionDate = new System.Data.DataColumn("DistributionDate", typeof(System.DateTime), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDistributionDate);
-                this.columnMoney = new System.Data.DataColumn("Money", typeof(decimal), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMoney);
-                this.columnFeecbackStatus = new System.Data.DataColumn("FeecbackStatus", typeof(byte), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFeecbackStatus);
-                this.Constraints.Add(new System.Data.UniqueConstraint("Constraint1", new System.Data.DataColumn[] {
-                                this.columnDistributionID}, true));
-                this.columnDistributionID.AutoIncrement = true;
-                this.columnDistributionID.AllowDBNull = false;
-                this.columnDistributionID.ReadOnly = true;
-                this.columnDistributionID.Unique = true;
-                this.columnFromUserID.AllowDBNull = false;
-                this.columnToUserID.AllowDBNull = false;
-                this.columnDistributionType.AllowDBNull = false;
-                this.columnPurpose.AllowDBNull = false;
-                this.columnPurpose.MaxLength = 2147483647;
-                this.columnProjectID.AllowDBNull = false;
-                this.columnDistributionDate.AllowDBNull = false;
-                this.columnMoney.AllowDBNull = false;
-                this.columnFeecbackStatus.AllowDBNull = false;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow NewDistributionRow() {
-                return ((DistributionRow)(this.NewRow()));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
-                return new DistributionRow(builder);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Type GetRowType() {
-                return typeof(DistributionRow);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DistributionRowChanged != null)) {
-                    this.DistributionRowChanged(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DistributionRowChanging != null)) {
-                    this.DistributionRowChanging(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DistributionRowDeleted != null)) {
-                    this.DistributionRowDeleted(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DistributionRowDeleting != null)) {
-                    this.DistributionRowDeleting(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemoveDistributionRow(DistributionRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
-                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
-                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
-                VCFDataSet ds = new VCFDataSet();
-                xs.Add(ds.GetSchemaSerializable());
-                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DistributionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 return type;
@@ -2716,6 +2400,322 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DistributionDataTable : System.Data.DataTable, System.Collections.IEnumerable {
+            
+            private System.Data.DataColumn columnDistributionID;
+            
+            private System.Data.DataColumn columnFromUserID;
+            
+            private System.Data.DataColumn columnToUserID;
+            
+            private System.Data.DataColumn columnDistributionType;
+            
+            private System.Data.DataColumn columnPurpose;
+            
+            private System.Data.DataColumn columnProjectID;
+            
+            private System.Data.DataColumn columnDistributionDate;
+            
+            private System.Data.DataColumn columnMoney;
+            
+            private System.Data.DataColumn columnFeedbackStatus;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionDataTable() {
+                this.TableName = "Distribution";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal DistributionDataTable(System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected DistributionDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn DistributionIDColumn {
+                get {
+                    return this.columnDistributionID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FromUserIDColumn {
+                get {
+                    return this.columnFromUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn ToUserIDColumn {
+                get {
+                    return this.columnToUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn DistributionTypeColumn {
+                get {
+                    return this.columnDistributionType;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn PurposeColumn {
+                get {
+                    return this.columnPurpose;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn ProjectIDColumn {
+                get {
+                    return this.columnProjectID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn DistributionDateColumn {
+                get {
+                    return this.columnDistributionDate;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn MoneyColumn {
+                get {
+                    return this.columnMoney;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FeedbackStatusColumn {
+                get {
+                    return this.columnFeedbackStatus;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow this[int index] {
+                get {
+                    return ((DistributionRow)(this.Rows[index]));
+                }
+            }
+            
+            public event DistributionRowChangeEventHandler DistributionRowChanging;
+            
+            public event DistributionRowChangeEventHandler DistributionRowChanged;
+            
+            public event DistributionRowChangeEventHandler DistributionRowDeleting;
+            
+            public event DistributionRowChangeEventHandler DistributionRowDeleted;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddDistributionRow(DistributionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow AddDistributionRow(UserRow parentUserRowByFK_Distribution_User, UserRow parentUserRowByFK_Distribution_User1, byte DistributionType, string Purpose, ProjectRow parentProjectRowByFK_Distribution_Project, System.DateTime DistributionDate, decimal Money, byte FeedbackStatus) {
+                DistributionRow rowDistributionRow = ((DistributionRow)(this.NewRow()));
+                rowDistributionRow.ItemArray = new object[] {
+                        null,
+                        parentUserRowByFK_Distribution_User[0],
+                        parentUserRowByFK_Distribution_User1[0],
+                        DistributionType,
+                        Purpose,
+                        parentProjectRowByFK_Distribution_Project[0],
+                        DistributionDate,
+                        Money,
+                        FeedbackStatus};
+                this.Rows.Add(rowDistributionRow);
+                return rowDistributionRow;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow FindByDistributionID(int DistributionID) {
+                return ((DistributionRow)(this.Rows.Find(new object[] {
+                            DistributionID})));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override System.Data.DataTable Clone() {
+                DistributionDataTable cln = ((DistributionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataTable CreateInstance() {
+                return new DistributionDataTable();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnDistributionID = base.Columns["DistributionID"];
+                this.columnFromUserID = base.Columns["FromUserID"];
+                this.columnToUserID = base.Columns["ToUserID"];
+                this.columnDistributionType = base.Columns["DistributionType"];
+                this.columnPurpose = base.Columns["Purpose"];
+                this.columnProjectID = base.Columns["ProjectID"];
+                this.columnDistributionDate = base.Columns["DistributionDate"];
+                this.columnMoney = base.Columns["Money"];
+                this.columnFeedbackStatus = base.Columns["FeedbackStatus"];
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnDistributionID = new System.Data.DataColumn("DistributionID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistributionID);
+                this.columnFromUserID = new System.Data.DataColumn("FromUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromUserID);
+                this.columnToUserID = new System.Data.DataColumn("ToUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToUserID);
+                this.columnDistributionType = new System.Data.DataColumn("DistributionType", typeof(byte), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistributionType);
+                this.columnPurpose = new System.Data.DataColumn("Purpose", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPurpose);
+                this.columnProjectID = new System.Data.DataColumn("ProjectID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProjectID);
+                this.columnDistributionDate = new System.Data.DataColumn("DistributionDate", typeof(System.DateTime), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistributionDate);
+                this.columnMoney = new System.Data.DataColumn("Money", typeof(decimal), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoney);
+                this.columnFeedbackStatus = new System.Data.DataColumn("FeedbackStatus", typeof(byte), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFeedbackStatus);
+                this.Constraints.Add(new System.Data.UniqueConstraint("Constraint1", new System.Data.DataColumn[] {
+                                this.columnDistributionID}, true));
+                this.columnDistributionID.AutoIncrement = true;
+                this.columnDistributionID.AllowDBNull = false;
+                this.columnDistributionID.ReadOnly = true;
+                this.columnDistributionID.Unique = true;
+                this.columnFromUserID.AllowDBNull = false;
+                this.columnToUserID.AllowDBNull = false;
+                this.columnDistributionType.AllowDBNull = false;
+                this.columnPurpose.AllowDBNull = false;
+                this.columnPurpose.MaxLength = 2147483647;
+                this.columnProjectID.AllowDBNull = false;
+                this.columnDistributionDate.AllowDBNull = false;
+                this.columnMoney.AllowDBNull = false;
+                this.columnFeedbackStatus.AllowDBNull = false;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow NewDistributionRow() {
+                return ((DistributionRow)(this.NewRow()));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
+                return new DistributionRow(builder);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Type GetRowType() {
+                return typeof(DistributionRow);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DistributionRowChanged != null)) {
+                    this.DistributionRowChanged(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DistributionRowChanging != null)) {
+                    this.DistributionRowChanging(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DistributionRowDeleted != null)) {
+                    this.DistributionRowDeleted(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DistributionRowDeleting != null)) {
+                    this.DistributionRowDeleting(this, new DistributionRowChangeEvent(((DistributionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveDistributionRow(DistributionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
+                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
+                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
+                VCFDataSet ds = new VCFDataSet();
+                xs.Add(ds.GetSchemaSerializable());
+                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DistributionDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                return type;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class CityRow : System.Data.DataRow {
             
             private CityDataTable tableCity;
@@ -2753,138 +2753,6 @@ namespace BLL {
                 }
                 set {
                     this[this.tableCity.ProvienceColumn] = value;
-                }
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class DistributionRow : System.Data.DataRow {
-            
-            private DistributionDataTable tableDistribution;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal DistributionRow(System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDistribution = ((DistributionDataTable)(this.Table));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int DistributionID {
-                get {
-                    return ((int)(this[this.tableDistribution.DistributionIDColumn]));
-                }
-                set {
-                    this[this.tableDistribution.DistributionIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int FromUserID {
-                get {
-                    return ((int)(this[this.tableDistribution.FromUserIDColumn]));
-                }
-                set {
-                    this[this.tableDistribution.FromUserIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int ToUserID {
-                get {
-                    return ((int)(this[this.tableDistribution.ToUserIDColumn]));
-                }
-                set {
-                    this[this.tableDistribution.ToUserIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public byte DistributionType {
-                get {
-                    return ((byte)(this[this.tableDistribution.DistributionTypeColumn]));
-                }
-                set {
-                    this[this.tableDistribution.DistributionTypeColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Purpose {
-                get {
-                    return ((string)(this[this.tableDistribution.PurposeColumn]));
-                }
-                set {
-                    this[this.tableDistribution.PurposeColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int ProjectID {
-                get {
-                    return ((int)(this[this.tableDistribution.ProjectIDColumn]));
-                }
-                set {
-                    this[this.tableDistribution.ProjectIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime DistributionDate {
-                get {
-                    return ((System.DateTime)(this[this.tableDistribution.DistributionDateColumn]));
-                }
-                set {
-                    this[this.tableDistribution.DistributionDateColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public decimal Money {
-                get {
-                    return ((decimal)(this[this.tableDistribution.MoneyColumn]));
-                }
-                set {
-                    this[this.tableDistribution.MoneyColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public byte FeecbackStatus {
-                get {
-                    return ((byte)(this[this.tableDistribution.FeecbackStatusColumn]));
-                }
-                set {
-                    this[this.tableDistribution.FeecbackStatusColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRow UserRowByFK_Distribution_User {
-                get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_User"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_User"]);
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRow UserRowByFK_Distribution_User1 {
-                get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_User1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_User1"]);
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ProjectRow ProjectRow {
-                get {
-                    return ((ProjectRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_Project"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_Project"]);
                 }
             }
         }
@@ -3430,16 +3298,6 @@ namespace BLL {
             }
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow[] GetDistributionRowsByFK_Distribution_User() {
-                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_User"])));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow[] GetDistributionRowsByFK_Distribution_User1() {
-                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_User1"])));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DonationRow[] GetDonationRows() {
                 return ((DonationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Donation_User"])));
             }
@@ -3457,6 +3315,16 @@ namespace BLL {
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProjectRow[] GetProjectRows() {
                 return ((ProjectRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Project_Project"])));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow[] GetDistributionRowsByFK_Distribution_User() {
+                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_User"])));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow[] GetDistributionRowsByFK_Distribution_User1() {
+                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_User1"])));
             }
         }
         
@@ -3542,13 +3410,13 @@ namespace BLL {
             }
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow[] GetDistributionRows() {
-                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_Project"])));
+            public DonationRow[] GetDonationRows() {
+                return ((DonationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Donation_Project"])));
             }
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DonationRow[] GetDonationRows() {
-                return ((DonationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Donation_Project"])));
+            public DistributionRow[] GetDistributionRows() {
+                return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_Project"])));
             }
         }
         
@@ -3880,6 +3748,138 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class DistributionRow : System.Data.DataRow {
+            
+            private DistributionDataTable tableDistribution;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal DistributionRow(System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDistribution = ((DistributionDataTable)(this.Table));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int DistributionID {
+                get {
+                    return ((int)(this[this.tableDistribution.DistributionIDColumn]));
+                }
+                set {
+                    this[this.tableDistribution.DistributionIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int FromUserID {
+                get {
+                    return ((int)(this[this.tableDistribution.FromUserIDColumn]));
+                }
+                set {
+                    this[this.tableDistribution.FromUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ToUserID {
+                get {
+                    return ((int)(this[this.tableDistribution.ToUserIDColumn]));
+                }
+                set {
+                    this[this.tableDistribution.ToUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public byte DistributionType {
+                get {
+                    return ((byte)(this[this.tableDistribution.DistributionTypeColumn]));
+                }
+                set {
+                    this[this.tableDistribution.DistributionTypeColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Purpose {
+                get {
+                    return ((string)(this[this.tableDistribution.PurposeColumn]));
+                }
+                set {
+                    this[this.tableDistribution.PurposeColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ProjectID {
+                get {
+                    return ((int)(this[this.tableDistribution.ProjectIDColumn]));
+                }
+                set {
+                    this[this.tableDistribution.ProjectIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime DistributionDate {
+                get {
+                    return ((System.DateTime)(this[this.tableDistribution.DistributionDateColumn]));
+                }
+                set {
+                    this[this.tableDistribution.DistributionDateColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal Money {
+                get {
+                    return ((decimal)(this[this.tableDistribution.MoneyColumn]));
+                }
+                set {
+                    this[this.tableDistribution.MoneyColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public byte FeedbackStatus {
+                get {
+                    return ((byte)(this[this.tableDistribution.FeedbackStatusColumn]));
+                }
+                set {
+                    this[this.tableDistribution.FeedbackStatusColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ProjectRow ProjectRow {
+                get {
+                    return ((ProjectRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_Project"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_Project"]);
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRow UserRowByFK_Distribution_User {
+                get {
+                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_User"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_User"]);
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRow UserRowByFK_Distribution_User1 {
+                get {
+                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Distribution_User1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Distribution_User1"]);
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public class CityRowChangeEvent : System.EventArgs {
             
             private CityRow eventRow;
@@ -3894,34 +3894,6 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public CityRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class DistributionRowChangeEvent : System.EventArgs {
-            
-            private DistributionRow eventRow;
-            
-            private System.Data.DataRowAction eventAction;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRowChangeEvent(DistributionRow row, System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DistributionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4062,6 +4034,34 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public V_FormatedUserRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class DistributionRowChangeEvent : System.EventArgs {
+            
+            private DistributionRow eventRow;
+            
+            private System.Data.DataRowAction eventAction;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRowChangeEvent(DistributionRow row, System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DistributionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4355,334 +4355,6 @@ SELECT CityID, Name, Provience FROM City WHERE (CityID = @CityID)";
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Provience));
             }
-            System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.ComponentModel.ToolboxItem(true)]
-    [System.ComponentModel.DataObjectAttribute(true)]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DistributionTableAdapter : System.ComponentModel.Component {
-        
-        private System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private System.Data.SqlClient.SqlConnection _connection;
-        
-        private System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public DistributionTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitAdapter() {
-            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
-            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Distribution";
-            tableMapping.ColumnMappings.Add("DistributionID", "DistributionID");
-            tableMapping.ColumnMappings.Add("FromUserID", "FromUserID");
-            tableMapping.ColumnMappings.Add("ToUserID", "ToUserID");
-            tableMapping.ColumnMappings.Add("DistributionType", "DistributionType");
-            tableMapping.ColumnMappings.Add("Purpose", "Purpose");
-            tableMapping.ColumnMappings.Add("ProjectID", "ProjectID");
-            tableMapping.ColumnMappings.Add("DistributionDate", "DistributionDate");
-            tableMapping.ColumnMappings.Add("Money", "Money");
-            tableMapping.ColumnMappings.Add("FeecbackStatus", "FeecbackStatus");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Distribution] WHERE (([DistributionID] = @Original_DistributionID) AND ([FromUserID] = @Original_FromUserID) AND ([ToUserID] = @Original_ToUserID) AND ([DistributionType] = @Original_DistributionType) AND ([ProjectID] = @Original_ProjectID) AND ([DistributionDate] = @Original_DistributionDate) AND ([Money] = @Original_Money) AND ([FeecbackStatus] = @Original_FeecbackStatus))";
-            this._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FeecbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeecbackStatus", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [Purpose], [ProjectID], [DistributionDate], [Money], [FeecbackStatus]) VALUES (@FromUserID, @ToUserID, @DistributionType, @Purpose, @ProjectID, @DistributionDate, @Money, @FeecbackStatus);
-SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeecbackStatus FROM Distribution WHERE (DistributionID = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 0, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FeecbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeecbackStatus", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Distribution] SET [FromUserID] = @FromUserID, [ToUserID] = @ToUserID, [DistributionType] = @DistributionType, [Purpose] = @Purpose, [ProjectID] = @ProjectID, [DistributionDate] = @DistributionDate, [Money] = @Money, [FeecbackStatus] = @FeecbackStatus WHERE (([DistributionID] = @Original_DistributionID) AND ([FromUserID] = @Original_FromUserID) AND ([ToUserID] = @Original_ToUserID) AND ([DistributionType] = @Original_DistributionType) AND ([ProjectID] = @Original_ProjectID) AND ([DistributionDate] = @Original_DistributionDate) AND ([Money] = @Original_Money) AND ([FeecbackStatus] = @Original_FeecbackStatus));
-SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeecbackStatus FROM Distribution WHERE (DistributionID = @DistributionID)";
-            this._adapter.UpdateCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 0, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FeecbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeecbackStatus", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FeecbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeecbackStatus", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitConnection() {
-            this._connection = new System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
-                ", DistributionDate, Money, FeecbackStatus FROM dbo.Distribution";
-            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(VCFDataSet.DistributionDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual VCFDataSet.DistributionDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            VCFDataSet.DistributionDataTable dataTable = new VCFDataSet.DistributionDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(VCFDataSet.DistributionDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(VCFDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Distribution");
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_DistributionID, int Original_FromUserID, int Original_ToUserID, byte Original_DistributionType, int Original_ProjectID, System.DateTime Original_DistributionDate, decimal Original_Money, byte Original_FeecbackStatus) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DistributionID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_FromUserID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ToUserID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((byte)(Original_DistributionType));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ProjectID));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_DistributionDate));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_Money));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((byte)(Original_FeecbackStatus));
-            System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int FromUserID, int ToUserID, byte DistributionType, string Purpose, int ProjectID, System.DateTime DistributionDate, decimal Money, byte FeecbackStatus) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(FromUserID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ToUserID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((byte)(DistributionType));
-            if ((Purpose == null)) {
-                throw new System.ArgumentNullException("Purpose");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Purpose));
-            }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ProjectID));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(DistributionDate));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(Money));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((byte)(FeecbackStatus));
-            System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int FromUserID, 
-                    int ToUserID, 
-                    byte DistributionType, 
-                    string Purpose, 
-                    int ProjectID, 
-                    System.DateTime DistributionDate, 
-                    decimal Money, 
-                    byte FeecbackStatus, 
-                    int Original_DistributionID, 
-                    int Original_FromUserID, 
-                    int Original_ToUserID, 
-                    byte Original_DistributionType, 
-                    int Original_ProjectID, 
-                    System.DateTime Original_DistributionDate, 
-                    decimal Original_Money, 
-                    byte Original_FeecbackStatus, 
-                    int DistributionID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(FromUserID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ToUserID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((byte)(DistributionType));
-            if ((Purpose == null)) {
-                throw new System.ArgumentNullException("Purpose");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Purpose));
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ProjectID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(DistributionDate));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Money));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((byte)(FeecbackStatus));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_DistributionID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_FromUserID));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ToUserID));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Original_DistributionType));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ProjectID));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_DistributionDate));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Money));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((byte)(Original_FeecbackStatus));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(DistributionID));
             System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
                         != System.Data.ConnectionState.Open)) {
@@ -7031,6 +6703,334 @@ SELECT ProjectID, Name, Discription, ManagerID, CreateDate, IsActive FROM Projec
             VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.ToolboxItem(true)]
+    [System.ComponentModel.DataObjectAttribute(true)]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DistributionTableAdapter : System.ComponentModel.Component {
+        
+        private System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private System.Data.SqlClient.SqlConnection _connection;
+        
+        private System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public DistributionTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
+            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Distribution";
+            tableMapping.ColumnMappings.Add("DistributionID", "DistributionID");
+            tableMapping.ColumnMappings.Add("FromUserID", "FromUserID");
+            tableMapping.ColumnMappings.Add("ToUserID", "ToUserID");
+            tableMapping.ColumnMappings.Add("DistributionType", "DistributionType");
+            tableMapping.ColumnMappings.Add("Purpose", "Purpose");
+            tableMapping.ColumnMappings.Add("ProjectID", "ProjectID");
+            tableMapping.ColumnMappings.Add("DistributionDate", "DistributionDate");
+            tableMapping.ColumnMappings.Add("Money", "Money");
+            tableMapping.ColumnMappings.Add("FeedbackStatus", "FeedbackStatus");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Distribution] WHERE (([DistributionID] = @Original_DistributionID) AND ([FromUserID] = @Original_FromUserID) AND ([ToUserID] = @Original_ToUserID) AND ([DistributionType] = @Original_DistributionType) AND ([ProjectID] = @Original_ProjectID) AND ([DistributionDate] = @Original_DistributionDate) AND ([Money] = @Original_Money) AND ([FeedbackStatus] = @Original_FeedbackStatus))";
+            this._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FeedbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeedbackStatus", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [Purpose], [ProjectID], [DistributionDate], [Money], [FeedbackStatus]) VALUES (@FromUserID, @ToUserID, @DistributionType, @Purpose, @ProjectID, @DistributionDate, @Money, @FeedbackStatus);
+SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeedbackStatus FROM Distribution WHERE (DistributionID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 0, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FeedbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeedbackStatus", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Distribution] SET [FromUserID] = @FromUserID, [ToUserID] = @ToUserID, [DistributionType] = @DistributionType, [Purpose] = @Purpose, [ProjectID] = @ProjectID, [DistributionDate] = @DistributionDate, [Money] = @Money, [FeedbackStatus] = @FeedbackStatus WHERE (([DistributionID] = @Original_DistributionID) AND ([FromUserID] = @Original_FromUserID) AND ([ToUserID] = @Original_ToUserID) AND ([DistributionType] = @Original_DistributionType) AND ([ProjectID] = @Original_ProjectID) AND ([DistributionDate] = @Original_DistributionDate) AND ([Money] = @Original_Money) AND ([FeedbackStatus] = @Original_FeedbackStatus));
+SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeedbackStatus FROM Distribution WHERE (DistributionID = @DistributionID)";
+            this._adapter.UpdateCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 0, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@FeedbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeedbackStatus", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FromUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ToUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionType", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_DistributionDate", System.Data.SqlDbType.DateTime, 0, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_Money", System.Data.SqlDbType.Money, 0, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_FeedbackStatus", System.Data.SqlDbType.TinyInt, 0, System.Data.ParameterDirection.Input, 0, 0, "FeedbackStatus", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "DistributionID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
+                ", DistributionDate, Money, FeedbackStatus FROM dbo.Distribution";
+            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(VCFDataSet.DistributionDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual VCFDataSet.DistributionDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            VCFDataSet.DistributionDataTable dataTable = new VCFDataSet.DistributionDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(VCFDataSet.DistributionDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(VCFDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Distribution");
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_DistributionID, int Original_FromUserID, int Original_ToUserID, byte Original_DistributionType, int Original_ProjectID, System.DateTime Original_DistributionDate, decimal Original_Money, byte Original_FeedbackStatus) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DistributionID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_FromUserID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ToUserID));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((byte)(Original_DistributionType));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ProjectID));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_DistributionDate));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_Money));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((byte)(Original_FeedbackStatus));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int FromUserID, int ToUserID, byte DistributionType, string Purpose, int ProjectID, System.DateTime DistributionDate, decimal Money, byte FeedbackStatus) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(FromUserID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ToUserID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((byte)(DistributionType));
+            if ((Purpose == null)) {
+                throw new System.ArgumentNullException("Purpose");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Purpose));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ProjectID));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(DistributionDate));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(Money));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((byte)(FeedbackStatus));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int FromUserID, 
+                    int ToUserID, 
+                    byte DistributionType, 
+                    string Purpose, 
+                    int ProjectID, 
+                    System.DateTime DistributionDate, 
+                    decimal Money, 
+                    byte FeedbackStatus, 
+                    int Original_DistributionID, 
+                    int Original_FromUserID, 
+                    int Original_ToUserID, 
+                    byte Original_DistributionType, 
+                    int Original_ProjectID, 
+                    System.DateTime Original_DistributionDate, 
+                    decimal Original_Money, 
+                    byte Original_FeedbackStatus, 
+                    int DistributionID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(FromUserID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ToUserID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((byte)(DistributionType));
+            if ((Purpose == null)) {
+                throw new System.ArgumentNullException("Purpose");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Purpose));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ProjectID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(DistributionDate));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Money));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((byte)(FeedbackStatus));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_DistributionID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_FromUserID));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ToUserID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Original_DistributionType));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ProjectID));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_DistributionDate));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Money));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((byte)(Original_FeedbackStatus));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(DistributionID));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
         }
     }
 }

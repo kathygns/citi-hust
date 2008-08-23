@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default"  ValidateRequest="false"%>
 
-<%@ Register Src="Controls/CommonControl.ascx" TagName="CommonControl" TagPrefix="uc4" %>
+
 
 <%@ Register Src="Controls/UserDetailControl.ascx" TagName="UserDetailControl" TagPrefix="uc3" %>
 
@@ -29,7 +29,7 @@
     TODO:body class=tundra
     <br />
     <br />
-    <uc4:CommonControl ID="CommonControl1" runat="server" />
+    
     <br />
     <br />
 

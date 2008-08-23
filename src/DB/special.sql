@@ -36,7 +36,7 @@ INSERT INTO [dbo].[User] (
  pwdencrypt(33),
  'SecureQuestion',
  'SecureAnswer',
- 1,
+ 0,
  'Photo',
  'RealName',
  'true',
