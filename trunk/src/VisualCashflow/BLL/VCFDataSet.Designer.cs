@@ -6858,12 +6858,25 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
                 ", DistributionDate, Money, FeedbackStatus FROM dbo.Distribution";
             this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [Purpose], [ProjectID], [DistributionDate], [Money], [FeedbackStatus]) VALUES (@FromUserID, @ToUserID, @DistributionType, @Purpose, @ProjectID, @DistributionDate, @Money, @FeedbackStatus);
+SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeedbackStatus FROM Distribution WHERE (DistributionID = SCOPE_IDENTITY())";
+            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionType", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "DistributionType", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 2147483647, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 8, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FeedbackStatus", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "FeedbackStatus", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7031,6 +7044,41 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertDistributionFeedback(int FromUserID, int ToUserID, byte DistributionType, string Purpose, int ProjectID, System.DateTime DistributionDate, decimal Money, byte FeedbackStatus) {
+            System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(FromUserID));
+            command.Parameters[1].Value = ((int)(ToUserID));
+            command.Parameters[2].Value = ((byte)(DistributionType));
+            if ((Purpose == null)) {
+                throw new System.ArgumentNullException("Purpose");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Purpose));
+            }
+            command.Parameters[4].Value = ((int)(ProjectID));
+            command.Parameters[5].Value = ((System.DateTime)(DistributionDate));
+            command.Parameters[6].Value = ((decimal)(Money));
+            command.Parameters[7].Value = ((byte)(FeedbackStatus));
+            System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
 }
