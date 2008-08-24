@@ -1,17 +1,89 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DistributionFeedback.aspx.cs" Inherits="DistributionFeedback" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register Src="Controls/HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>无标题页</title>
+    <title>资金反馈表页</title>
 </head>
-<body>
+<body class="tundra">
     <form id="form1" runat="server">
     <div>
-        <asp:FormView ID="FormView1" runat="server" DataSourceID="DistributionFeedbackSource">
+        <asp:ObjectDataSource ID="DistributionFeedbackSource" runat="server" DeleteMethod="Delete" InsertMethod="InsertDistributionFeedback" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="BLL.VCFDataSetTableAdapters.DistributionTableAdapter" UpdateMethod="Update">
+            <InsertParameters>
+                <asp:Parameter Name="FromUserID" Type="Int32" />
+                <asp:Parameter Name="Purpose" Type="String" />
+                <asp:Parameter Name="ProjectID" Type="Int32" />
+                <asp:Parameter Name="DistributionDate" Type="DateTime" />
+                <asp:Parameter Name="Money" Type="Decimal" />
+            </InsertParameters>
+        </asp:ObjectDataSource>
+        <br />
+        <uc1:HeaderControl ID="HeaderControl1" runat="server" />
+
+        <script type="text/javascript">
+           dojo.require("dijit.form.ValidationTextBox");
+        </script>
+
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionFeedbackSource"
+            DefaultMode="Insert"  >
+            <InsertItemTemplate>
+                <br />
+                <table>
+                    <tr>
+                        <td style="width: 108px">
+                            项目名称</td>
+                        <td style="width: 98px">
+                            <asp:DropDownList ID="DropDownListProjectName" runat="server" SelectedValue = '<%# Bind("ProjectID") %>' OnInit="DropDownListProjectName_Init" >
+                            </asp:DropDownList>
+                        </td>
+                        <td style="width: 98px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 108px">
+                            资金数目</td>
+                        <td style="width: 98px">
+                <asp:TextBox ID="MoneyTextBox" runat="server" Text='<%# Bind("Money") %>'
+                
+                dojoType="dijit.form.ValidationTextBox"
+                regExp="^[0-9]+(.[0-9]{0,2})?$"
+                required="true"
+                invalidMessage="资金格式不对"
+                >
+                
+                </asp:TextBox></td>
+                        <td style="width: 98px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 108px">
+                            资金用途</td>
+                        <td style="width: 98px">
+                        </td>
+                        <td style="width: 98px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="height: 204px">
+                            <asp:TextBox ID="TextBox1" runat="server" Height="192px" TextMode="MultiLine" Width="370px" Text='<%# Bind("Purpose") %>'></asp:TextBox></td>
+                    </tr>
+                </table>
+                <asp:TextBox ID="FromUserIDTextBox" runat="server" Text='<%# Bind("FromUserID") %>'
+                    Visible="False"></asp:TextBox><br />
+                <asp:TextBox ID="DistributionDateTextBox" runat="server" Text='<%# Bind("DistributionDate") %>'
+                    Visible="False"></asp:TextBox><br />
+                <br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
+                    Text="插入" ></asp:LinkButton>
+                <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
+                    Text="取消"></asp:LinkButton>
+            </InsertItemTemplate>
         </asp:FormView>
-        <asp:ObjectDataSource ID="DistributionFeedbackSource" runat="server"></asp:ObjectDataSource>
     
     </div>
     </form>
