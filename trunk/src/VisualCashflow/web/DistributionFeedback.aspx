@@ -13,6 +13,7 @@
 <body class="tundra">
     <form id="form1" runat="server">
     <div>
+        
         <asp:ObjectDataSource ID="DistributionFeedbackSource" runat="server" DeleteMethod="Delete" InsertMethod="InsertDistributionFeedback" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="BLL.VCFDataSetTableAdapters.DistributionTableAdapter" UpdateMethod="Update">
             <InsertParameters>
                 <asp:Parameter Name="FromUserID" Type="Int32" />
@@ -28,8 +29,31 @@
         <script type="text/javascript">
            dojo.require("dijit.form.ValidationTextBox");
         </script>
-
-        <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionFeedbackSource"
+        
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                  <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <Columns>
+                <asp:BoundField DataField="Purpose" HeaderText="项目用途" SortExpression="Purpose" />
+                <asp:BoundField DataField="DistributionDate" HeaderText="提交日期" SortExpression="DistributionDate" />
+                <asp:BoundField DataField="Money" HeaderText="金额" SortExpression="Money" />
+                <asp:BoundField DataField="Name" HeaderText="项目名称" SortExpression="Name" />
+                <asp:BoundField DataField="FeedbackStatus" HeaderText="是否已通过" ReadOnly="True"
+                    SortExpression="FeedbackStatus" />
+            </Columns>
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#EFF3FB" />
+            <EditRowStyle BackColor="#2461BF" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <AlternatingRowStyle BackColor="White" />
+        </asp:GridView>
+            
+                       <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionFeedbackSource"
             DefaultMode="Insert"  >
             <InsertItemTemplate>
                 <br />
@@ -84,6 +108,13 @@
                     Text="取消"></asp:LinkButton>
             </InsertItemTemplate>
         </asp:FormView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+  
+        <br />
+        <br />
+        
+ 
     
     </div>
     </form>
