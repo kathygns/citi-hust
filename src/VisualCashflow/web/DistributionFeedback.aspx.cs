@@ -16,8 +16,8 @@ public partial class DistributionFeedback : System.Web.UI.Page
 {        
     protected void InitForm()
     {
-        //BLL.VCFDataSet.UserRow U = new App_Code.SessionManager(this).Admin;
-        BLL.VCFDataSet.UserRow U = new App_Code.SessionManager(this).Beneficiary;
+        BLL.VCFDataSet.UserRow U = new App_Code.SessionManager(this).User;
+        //BLL.VCFDataSet.UserRow U = new App_Code.SessionManager(this).Beneficiary;
         BLL.VCFDataSet.V_Distribution_ProjectDataTable VV = new BLL.VCFDataSetTableAdapters.V_Distribution_ProjectTableAdapter().GetDataByToUserID(U.UserID);
 
         DropDownList tddl = FormView1.FindControl("DropDownListProjectName") as DropDownList;
@@ -35,11 +35,19 @@ public partial class DistributionFeedback : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        GridView1Bind();
     }
 
  
     protected void DropDownListProjectName_Init(object sender, EventArgs e)
     {
         InitForm();
+    }
+    protected void GridView1Bind()
+    {
+        //BLL.VCFDataSet.V_User_Distribution_ProjectDataTable vudp = new BLL.VCFDataSetTableAdapters.V_User_Distribution_ProjectTableAdapter().GetDataOfReceiptProject(new App_Code.SessionManager(this).User.UserID);
+        BLL.VCFDataSet.V_User_Distribution_ProjectDataTable vudp = new BLL.VCFDataSetTableAdapters.V_User_Distribution_ProjectTableAdapter().GetDataByFromUserID(new App_Code.SessionManager(this).User.UserID);
+        GridView1.DataSource = vudp;
+        GridView1.DataBind();
     }
 }
