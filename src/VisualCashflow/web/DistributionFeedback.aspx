@@ -35,14 +35,25 @@
         
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                  <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                  <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="Gv_" >
             <Columns>
-                <asp:BoundField DataField="Purpose" HeaderText="项目用途" SortExpression="Purpose" />
-                <asp:BoundField DataField="DistributionDate" HeaderText="提交日期" SortExpression="DistributionDate" />
-                <asp:BoundField DataField="Money" HeaderText="金额" SortExpression="Money" />
-                <asp:BoundField DataField="Name" HeaderText="项目名称" SortExpression="Name" />
+                <asp:BoundField DataField="Name" HeaderText="项目名称" SortExpression="Name" >
+                    <ControlStyle Width="20px" />
+                    <ItemStyle Width="180px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Purpose" HeaderText="项目用途" SortExpression="Purpose" >
+                    <ItemStyle Width="350px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="DistributionDate" HeaderText="提交日期" SortExpression="DistributionDate" >
+                    <ItemStyle Width="180px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Money" HeaderText="金额" SortExpression="Money" >
+                    <ItemStyle Width="150px" />
+                </asp:BoundField>
                 <asp:BoundField DataField="FeedbackStatus" HeaderText="是否已通过" ReadOnly="True"
-                    SortExpression="FeedbackStatus" />
+                    SortExpression="FeedbackStatus" >
+                    <ItemStyle Width="50px" />
+                </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <RowStyle BackColor="#EFF3FB" />
@@ -52,7 +63,7 @@
             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>
-            
+        
                        <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionFeedbackSource"
             DefaultMode="Insert"  >
             <InsertItemTemplate>
@@ -108,7 +119,12 @@
                     Text="取消"></asp:LinkButton>
             </InsertItemTemplate>
         </asp:FormView>
-            </ContentTemplate>
+        </ContentTemplate>
+        <Triggers>
+        <asp:AsyncPostBackTrigger  ControlID="FormView1$InsertButton"/>
+        </Triggers>
+            
+            
         </asp:UpdatePanel>
   
         <br />
