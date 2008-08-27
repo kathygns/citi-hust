@@ -39,6 +39,8 @@ namespace BLL {
         
         private V_Distribution_ProjectDataTable tableV_Distribution_Project;
         
+        private V_User_Distribution_ProjectDataTable tableV_User_Distribution_Project;
+        
         private System.Data.DataRelation relationFK_User_User;
         
         private System.Data.DataRelation relationFK_Donation_User;
@@ -106,6 +108,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["V_Distribution_Project"] != null)) {
                     base.Tables.Add(new V_Distribution_ProjectDataTable(ds.Tables["V_Distribution_Project"]));
+                }
+                if ((ds.Tables["V_User_Distribution_Project"] != null)) {
+                    base.Tables.Add(new V_User_Distribution_ProjectDataTable(ds.Tables["V_User_Distribution_Project"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -198,6 +203,15 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public V_User_Distribution_ProjectDataTable V_User_Distribution_Project {
+            get {
+                return this.tableV_User_Distribution_Project;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -280,6 +294,9 @@ namespace BLL {
                 if ((ds.Tables["V_Distribution_Project"] != null)) {
                     base.Tables.Add(new V_Distribution_ProjectDataTable(ds.Tables["V_Distribution_Project"]));
                 }
+                if ((ds.Tables["V_User_Distribution_Project"] != null)) {
+                    base.Tables.Add(new V_User_Distribution_ProjectDataTable(ds.Tables["V_User_Distribution_Project"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -358,6 +375,12 @@ namespace BLL {
                     this.tableV_Distribution_Project.InitVars();
                 }
             }
+            this.tableV_User_Distribution_Project = ((V_User_Distribution_ProjectDataTable)(base.Tables["V_User_Distribution_Project"]));
+            if ((initTable == true)) {
+                if ((this.tableV_User_Distribution_Project != null)) {
+                    this.tableV_User_Distribution_Project.InitVars();
+                }
+            }
             this.relationFK_User_User = this.Relations["FK_User_User"];
             this.relationFK_Donation_User = this.Relations["FK_Donation_User"];
             this.relationFK_UserRelationShip_User = this.Relations["FK_UserRelationShip_User"];
@@ -392,6 +415,8 @@ namespace BLL {
             base.Tables.Add(this.tableDistribution);
             this.tableV_Distribution_Project = new V_Distribution_ProjectDataTable();
             base.Tables.Add(this.tableV_Distribution_Project);
+            this.tableV_User_Distribution_Project = new V_User_Distribution_ProjectDataTable();
+            base.Tables.Add(this.tableV_User_Distribution_Project);
             this.relationFK_User_User = new System.Data.DataRelation("FK_User_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUser.FatherUserIDColumn}, false);
@@ -471,6 +496,11 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeV_User_Distribution_Project() {
+            return false;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -505,6 +535,8 @@ namespace BLL {
         public delegate void DistributionRowChangeEventHandler(object sender, DistributionRowChangeEvent e);
         
         public delegate void V_Distribution_ProjectRowChangeEventHandler(object sender, V_Distribution_ProjectRowChangeEvent e);
+        
+        public delegate void V_User_Distribution_ProjectRowChangeEventHandler(object sender, V_User_Distribution_ProjectRowChangeEvent e);
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [System.Serializable()]
@@ -2978,6 +3010,315 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class V_User_Distribution_ProjectDataTable : System.Data.DataTable, System.Collections.IEnumerable {
+            
+            private System.Data.DataColumn columnPurpose;
+            
+            private System.Data.DataColumn columnUserName;
+            
+            private System.Data.DataColumn columnExpr1;
+            
+            private System.Data.DataColumn columnDistributionDate;
+            
+            private System.Data.DataColumn columnMoney;
+            
+            private System.Data.DataColumn columnName;
+            
+            private System.Data.DataColumn columnFromUserID;
+            
+            private System.Data.DataColumn columnToUserID;
+            
+            private System.Data.DataColumn columnFeedbackStatus;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectDataTable() {
+                this.TableName = "V_User_Distribution_Project";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_User_Distribution_ProjectDataTable(System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected V_User_Distribution_ProjectDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn PurposeColumn {
+                get {
+                    return this.columnPurpose;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn UserNameColumn {
+                get {
+                    return this.columnUserName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn DistributionDateColumn {
+                get {
+                    return this.columnDistributionDate;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn MoneyColumn {
+                get {
+                    return this.columnMoney;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FromUserIDColumn {
+                get {
+                    return this.columnFromUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn ToUserIDColumn {
+                get {
+                    return this.columnToUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn FeedbackStatusColumn {
+                get {
+                    return this.columnFeedbackStatus;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectRow this[int index] {
+                get {
+                    return ((V_User_Distribution_ProjectRow)(this.Rows[index]));
+                }
+            }
+            
+            public event V_User_Distribution_ProjectRowChangeEventHandler V_User_Distribution_ProjectRowChanging;
+            
+            public event V_User_Distribution_ProjectRowChangeEventHandler V_User_Distribution_ProjectRowChanged;
+            
+            public event V_User_Distribution_ProjectRowChangeEventHandler V_User_Distribution_ProjectRowDeleting;
+            
+            public event V_User_Distribution_ProjectRowChangeEventHandler V_User_Distribution_ProjectRowDeleted;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddV_User_Distribution_ProjectRow(V_User_Distribution_ProjectRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectRow AddV_User_Distribution_ProjectRow(string Purpose, string UserName, string Expr1, System.DateTime DistributionDate, decimal Money, string Name, int FromUserID, int ToUserID, string FeedbackStatus) {
+                V_User_Distribution_ProjectRow rowV_User_Distribution_ProjectRow = ((V_User_Distribution_ProjectRow)(this.NewRow()));
+                rowV_User_Distribution_ProjectRow.ItemArray = new object[] {
+                        Purpose,
+                        UserName,
+                        Expr1,
+                        DistributionDate,
+                        Money,
+                        Name,
+                        FromUserID,
+                        ToUserID,
+                        FeedbackStatus};
+                this.Rows.Add(rowV_User_Distribution_ProjectRow);
+                return rowV_User_Distribution_ProjectRow;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override System.Data.DataTable Clone() {
+                V_User_Distribution_ProjectDataTable cln = ((V_User_Distribution_ProjectDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataTable CreateInstance() {
+                return new V_User_Distribution_ProjectDataTable();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnPurpose = base.Columns["Purpose"];
+                this.columnUserName = base.Columns["UserName"];
+                this.columnExpr1 = base.Columns["Expr1"];
+                this.columnDistributionDate = base.Columns["DistributionDate"];
+                this.columnMoney = base.Columns["Money"];
+                this.columnName = base.Columns["Name"];
+                this.columnFromUserID = base.Columns["FromUserID"];
+                this.columnToUserID = base.Columns["ToUserID"];
+                this.columnFeedbackStatus = base.Columns["FeedbackStatus"];
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnPurpose = new System.Data.DataColumn("Purpose", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPurpose);
+                this.columnUserName = new System.Data.DataColumn("UserName", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserName);
+                this.columnExpr1 = new System.Data.DataColumn("Expr1", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.columnDistributionDate = new System.Data.DataColumn("DistributionDate", typeof(System.DateTime), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistributionDate);
+                this.columnMoney = new System.Data.DataColumn("Money", typeof(decimal), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoney);
+                this.columnName = new System.Data.DataColumn("Name", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnFromUserID = new System.Data.DataColumn("FromUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromUserID);
+                this.columnToUserID = new System.Data.DataColumn("ToUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToUserID);
+                this.columnFeedbackStatus = new System.Data.DataColumn("FeedbackStatus", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFeedbackStatus);
+                this.columnPurpose.AllowDBNull = false;
+                this.columnPurpose.MaxLength = 2147483647;
+                this.columnUserName.AllowDBNull = false;
+                this.columnUserName.MaxLength = 50;
+                this.columnExpr1.AllowDBNull = false;
+                this.columnExpr1.MaxLength = 50;
+                this.columnDistributionDate.AllowDBNull = false;
+                this.columnMoney.AllowDBNull = false;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 100;
+                this.columnFromUserID.AllowDBNull = false;
+                this.columnToUserID.AllowDBNull = false;
+                this.columnFeedbackStatus.ReadOnly = true;
+                this.columnFeedbackStatus.MaxLength = 2;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectRow NewV_User_Distribution_ProjectRow() {
+                return ((V_User_Distribution_ProjectRow)(this.NewRow()));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
+                return new V_User_Distribution_ProjectRow(builder);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Type GetRowType() {
+                return typeof(V_User_Distribution_ProjectRow);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.V_User_Distribution_ProjectRowChanged != null)) {
+                    this.V_User_Distribution_ProjectRowChanged(this, new V_User_Distribution_ProjectRowChangeEvent(((V_User_Distribution_ProjectRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.V_User_Distribution_ProjectRowChanging != null)) {
+                    this.V_User_Distribution_ProjectRowChanging(this, new V_User_Distribution_ProjectRowChangeEvent(((V_User_Distribution_ProjectRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.V_User_Distribution_ProjectRowDeleted != null)) {
+                    this.V_User_Distribution_ProjectRowDeleted(this, new V_User_Distribution_ProjectRowChangeEvent(((V_User_Distribution_ProjectRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.V_User_Distribution_ProjectRowDeleting != null)) {
+                    this.V_User_Distribution_ProjectRowDeleting(this, new V_User_Distribution_ProjectRowChangeEvent(((V_User_Distribution_ProjectRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveV_User_Distribution_ProjectRow(V_User_Distribution_ProjectRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
+                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
+                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
+                VCFDataSet ds = new VCFDataSet();
+                xs.Add(ds.GetSchemaSerializable());
+                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "V_User_Distribution_ProjectDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                return type;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class CityRow : System.Data.DataRow {
             
             private CityDataTable tableCity;
@@ -4184,6 +4525,123 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class V_User_Distribution_ProjectRow : System.Data.DataRow {
+            
+            private V_User_Distribution_ProjectDataTable tableV_User_Distribution_Project;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_User_Distribution_ProjectRow(System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableV_User_Distribution_Project = ((V_User_Distribution_ProjectDataTable)(this.Table));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Purpose {
+                get {
+                    return ((string)(this[this.tableV_User_Distribution_Project.PurposeColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.PurposeColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string UserName {
+                get {
+                    return ((string)(this[this.tableV_User_Distribution_Project.UserNameColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.UserNameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Expr1 {
+                get {
+                    return ((string)(this[this.tableV_User_Distribution_Project.Expr1Column]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.Expr1Column] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime DistributionDate {
+                get {
+                    return ((System.DateTime)(this[this.tableV_User_Distribution_Project.DistributionDateColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.DistributionDateColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal Money {
+                get {
+                    return ((decimal)(this[this.tableV_User_Distribution_Project.MoneyColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.MoneyColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableV_User_Distribution_Project.NameColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.NameColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int FromUserID {
+                get {
+                    return ((int)(this[this.tableV_User_Distribution_Project.FromUserIDColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.FromUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ToUserID {
+                get {
+                    return ((int)(this[this.tableV_User_Distribution_Project.ToUserIDColumn]));
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.ToUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FeedbackStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_User_Distribution_Project.FeedbackStatusColumn]));
+                    }
+                    catch (System.InvalidCastException e) {
+                        throw new System.Data.StrongTypingException("表“V_User_Distribution_Project”中列“FeedbackStatus”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableV_User_Distribution_Project.FeedbackStatusColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFeedbackStatusNull() {
+                return this.IsNull(this.tableV_User_Distribution_Project.FeedbackStatusColumn);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFeedbackStatusNull() {
+                this[this.tableV_User_Distribution_Project.FeedbackStatusColumn] = System.Convert.DBNull;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public class CityRowChangeEvent : System.EventArgs {
             
             private CityRow eventRow;
@@ -4394,6 +4852,34 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public V_Distribution_ProjectRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class V_User_Distribution_ProjectRowChangeEvent : System.EventArgs {
+            
+            private V_User_Distribution_ProjectRow eventRow;
+            
+            private System.Data.DataRowAction eventAction;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectRowChangeEvent(V_User_Distribution_ProjectRow row, System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_User_Distribution_ProjectRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7607,6 +8093,160 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ToUserID));
             VCFDataSet.V_Distribution_ProjectDataTable dataTable = new VCFDataSet.V_Distribution_ProjectDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.ToolboxItem(true)]
+    [System.ComponentModel.DataObjectAttribute(true)]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class V_User_Distribution_ProjectTableAdapter : System.ComponentModel.Component {
+        
+        private System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private System.Data.SqlClient.SqlConnection _connection;
+        
+        private System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public V_User_Distribution_ProjectTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
+            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "V_User_Distribution_Project";
+            tableMapping.ColumnMappings.Add("Purpose", "Purpose");
+            tableMapping.ColumnMappings.Add("UserName", "UserName");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("DistributionDate", "DistributionDate");
+            tableMapping.ColumnMappings.Add("Money", "Money");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("FromUserID", "FromUserID");
+            tableMapping.ColumnMappings.Add("ToUserID", "ToUserID");
+            tableMapping.ColumnMappings.Add("FeedbackStatus", "FeedbackStatus");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Purpose, UserName, Expr1, DistributionDate, Money, Name, FromUserID, ToUse" +
+                "rID, FeedbackStatus FROM dbo.V_User_Distribution_Project";
+            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT Purpose, UserName, Expr1, DistributionDate, Money, Name, FromUserID, ToUse" +
+                "rID, FeedbackStatus FROM dbo.V_User_Distribution_Project\r\nWhere FromUserID = @V\r" +
+                "\n";
+            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@V", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(VCFDataSet.V_User_Distribution_ProjectDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual VCFDataSet.V_User_Distribution_ProjectDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            VCFDataSet.V_User_Distribution_ProjectDataTable dataTable = new VCFDataSet.V_User_Distribution_ProjectDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.V_User_Distribution_ProjectDataTable GetDataByFromUserID(int V) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(V));
+            VCFDataSet.V_User_Distribution_ProjectDataTable dataTable = new VCFDataSet.V_User_Distribution_ProjectDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
