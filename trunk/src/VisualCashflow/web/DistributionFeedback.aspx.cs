@@ -50,4 +50,10 @@ public partial class DistributionFeedback : System.Web.UI.Page
         GridView1.DataSource = vudp;
         GridView1.DataBind();
     }
+
+    protected void Gv_(object sender, GridViewPageEventArgs e)//处理gridview激发了未处理事件pageindexchanging
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        GridView1.DataBind();
+    }
 }
