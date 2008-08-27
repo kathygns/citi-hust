@@ -16,9 +16,9 @@
 <head runat="server">
     <title>项目管理</title>
 </head>
-<body class="tundra">
+<body class="tundra pageCenter" >
     <form id="form1" runat="server">
-        <div>
+        <div >
             <div class="talbeHeader">
             </div>
             <div class="table">
@@ -49,7 +49,7 @@
                 &nbsp;&nbsp;
                 <uc4:HeaderControl ID="HeaderControl1" runat="server" />
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProjectID"
-                    DataSourceID="ProjectDataSource">
+                    DataSourceID="ProjectDataSource" AllowPaging="True">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                         <asp:BoundField DataField="ProjectID" HeaderText="ProjectID" InsertVisible="False"

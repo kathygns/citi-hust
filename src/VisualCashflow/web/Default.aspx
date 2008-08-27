@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default"  ValidateRequest="false"%>
 
+<%@ Register Src="Controls/HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc4" %>
+
 
 
 <%@ Register Src="Controls/UserDetailControl.ascx" TagName="UserDetailControl" TagPrefix="uc3" %>
@@ -24,22 +26,14 @@
     
 
 </head>
-<body class="tundra">
-
-    TODO:body class=tundra
-    <br />
-    <br />
-    
-    <br />
-    <br />
+<body class="tundra ">
 
 
     <form id="form1" runat="server">
         <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </cc1:ToolkitScriptManager>
-
-
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <uc4:HeaderControl ID="HeaderControl1" runat="server" />
+        <br/>
 
     <div>
         <uc1:UserChooserControl id="UserChooserControl1" runat="server">
