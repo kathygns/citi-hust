@@ -1,0 +1,50 @@
+﻿
+
+	.box{
+		border:1px solid #CCC;
+		background:#FFF;
+		padding:8px;
+		margin:5px;
+		clear:both;
+	}
+
+	.title {
+		background:#F0F0F0;padding:5px;
+		font-weight:bold;
+	}
+
+	.tooltip{
+		background:#F0F0F0;
+		border-color:#bbb;
+	}
+
+	.tooltip h1 {
+	    color:#A8DF00;
+	    font-family: 微软雅黑,黑体,宋体,verdana, Arial;
+	}
+
+	.titlebutton{
+		float:right;
+	}
+
+	.uploading{
+	    background:#FFF;
+	    color:#444;
+	    text-align:left;
+	    width:500px;
+	    padding:4px;
+	}
+
+	.image{
+	    border:1px solid #ddd;
+	    margin:2px;
+	    padding:1px;
+	    display:inline;
+	    width:300px;
+	    height:300px;
+	}
+
+	.uploadcontrol {
+	    margin:4px 0;
+	    border-bottom:1px solid #F0F0F0;
+	}
