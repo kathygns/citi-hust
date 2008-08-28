@@ -3,8 +3,10 @@ use VCF;
 /*
 清空
 */
+delete from [dbo].[Distribution];
 delete from [dbo].[Project];
 delete from [dbo].[User];
+
 
 /*
 插入默认的管理员.
@@ -33,7 +35,7 @@ INSERT INTO [dbo].[User] (
  [FatherUserID]) VALUES (
 '0',
 'admin',
- pwdencrypt(33),
+ 'admin',
  'SecureQuestion',
  'SecureAnswer',
  0,

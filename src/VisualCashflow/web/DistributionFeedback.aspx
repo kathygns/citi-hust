@@ -65,7 +65,7 @@
         </asp:GridView>
         
                        <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionFeedbackSource"
-            DefaultMode="Insert"  >
+            DefaultMode="Insert" OnItemInserted="FormView1_ItemInserted"  >
             <InsertItemTemplate>
                 <br />
                 <table>
