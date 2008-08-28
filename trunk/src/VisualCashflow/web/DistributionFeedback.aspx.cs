@@ -56,4 +56,8 @@ public partial class DistributionFeedback : System.Web.UI.Page
         GridView1.PageIndex = e.NewPageIndex;
         GridView1.DataBind();
     }
+    protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
+    {
+        GridView1.DataBind();
+    }
 }

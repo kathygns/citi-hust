@@ -11,9 +11,53 @@ using System.Web.UI.HtmlControls;
 
 public partial class Controls_HeaderControl : System.Web.UI.UserControl
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
-        BLL.VCFDataSet.UserRow u=new App_Code.SessionManager(this.Page).User;
-        UserNameLabel.Text = BLL.VCFDataSet.UserDataTable.FormatUserName_RealName(u);
+        App_Code.SessionManager sm = new App_Code.SessionManager(this.Page);
+
+        ViewLink.Visible = true;
+
+        if (!_RequireLogin)
+        {
+            
+        }
+
+        if( sm.IsLogin)
+        {
+            BLL.VCFDataSet.UserRow u =sm.User;
+            UserNameLabel.Text = BLL.VCFDataSet.UserDataTable.FormatUserName_RealName(u);
+            UserNameLabel.Visible = true;
+            EditProfileLink.Visible = true;
+            LogOutLink.Visible = true;
+            if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Admin))
+            {
+                ProjectLink.Visible = true;
+                UserManagementLink.Visible = true;
+                AddProjectLink.Visible = true;
+                CreateUserLink.Visible = true;
+            }
+            else if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Beneficiary))
+                ;
+
+
+        }
+        else{
+            RegisterLink.Visible = true;
+
+        }
     }
+
+
+    
+    private bool _RequireLogin=true;
+
+    public bool RequireLogin
+    {
+        set
+        {
+            this._RequireLogin = value;
+        }
+    }
+     
 }

@@ -6,8 +6,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>捐款人注册</title>
+<head id="Head1" runat="server">
+    <title>创建用户</title>
     
     
         <style type="text/css">
@@ -21,7 +21,7 @@
     <form id="form1" runat="server">
         <div>
             
-            <uc1:HeaderControl ID="HeaderControl1" runat="server" RequireLogin="false"/>
+            <uc1:HeaderControl ID="HeaderControl1" runat="server" />
             
             <script type="text/javascript" src="/web/js/jquery.js"></script>
 	        <script type="text/javascript" src="/web/js/interface.js"></script>
@@ -104,6 +104,10 @@
                 el.append(strContent);
             };
 
+
+
+
+            	 	
          </script>
          
          <script language="javascript" type="text/javascript">
@@ -151,7 +155,7 @@
             </script>
 
             <br />
-            捐款人注册<br />
+            创建用户<br />
             <asp:FormView ID="FormView1" runat="server" DataKeyNames="UserID" DataSourceID="UserDataSource"
                 DefaultMode="Insert">
                 <InsertItemTemplate>
@@ -340,6 +344,67 @@
                                 
                             </td>
                         </tr>
+                        
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td style="width: 100px">
+                                银行帐号</td>
+                            <td style="width: 100px">
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("BankAccount") %>'
+                                dojoType="dijit.form.ValidationTextBox"
+                                regExp="\d{16}"
+                                required="true"
+                                invalidMessage="帐号有误(16位)"
+                                
+                                
+                                ></asp:TextBox></td>
+                            <td style="width: 100px">
+                                <span style="color: #ff0000">*</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px">
+                                身份证号</td>
+                            <td style="width: 100px">
+                                <asp:TextBox ID="IdentityCardTextBox" runat="server" Text='<%# Bind("IdentityCard") %>'
+                                dojoType="dijit.form.ValidationTextBox"
+                                required="true"
+                                regExp="\d{15}|\d{18}"
+                                invalidMessage="身份证号错误(15或18位)"
+                                
+                                
+                                ></asp:TextBox></td>
+                            <td style="width: 100px">
+                                <span style="color: #ff0000">*</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px">
+                                职位</td>
+                            <td style="width: 100px">
+                                <asp:TextBox ID="PositionTextBox" runat="server" Text='<%# Bind("Position") %>'
+                                dojoType="dijit.form.ValidationTextBox"
+                                required="true"
+                                invalidMessage="必填"
+                                
+                                
+                                ></asp:TextBox></td>
+                            <td style="width: 100px">
+                                <span style="color: #ff0000">*</span></td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        
+                    <asp:TextBox ID="FatherUserIDTextBox" runat="server" Text='<%# Bind("FatherUserID") %>' Visible="false">
+                    </asp:TextBox><br />
+                        
+                        
+                        
+                        
+                        
                         <tr>
                             <td style="width: 100px; height: 110px;">
                                 备注</td>
@@ -351,13 +416,13 @@
                     </table>
                     <br />
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
-                        Text="注册"></asp:LinkButton>
+                        Text="创建"></asp:LinkButton>
                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
                         Text="取消"></asp:LinkButton>
                 </InsertItemTemplate>
             </asp:FormView>
-            <asp:ObjectDataSource ID="UserDataSource" runat="server" InsertMethod="AddDonor"
-                OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="BLL.VCFDataSetTableAdapters.UserTableAdapter">
+            <asp:ObjectDataSource ID="UserDataSource" runat="server" InsertMethod="AddManager"
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="BLL.VCFDataSetTableAdapters.UserTableAdapter" DeleteMethod="Delete" UpdateMethod="Update">
                 <InsertParameters>
                     <asp:Parameter Name="UserName" Type="String" />
                     <asp:Parameter Name="Password" Type="String" />
@@ -371,7 +436,12 @@
                     <asp:Parameter Name="Email" Type="String" />
                     <asp:Parameter Name="Address" Type="String" />
                     <asp:Parameter Name="Comment" Type="String" />
+                    <asp:Parameter Name="BankAccount" Type="String" />
+                    <asp:Parameter Name="IdentityCard" Type="String" />
+                    <asp:Parameter Name="Position" Type="String" />
+                    <asp:Parameter Name="FatherUserID" Type="Int32" />
                 </InsertParameters>
+                
             </asp:ObjectDataSource>
             <br />
             
