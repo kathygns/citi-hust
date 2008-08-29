@@ -29,7 +29,6 @@
 	
         	
             <script type="text/javascript">
-                dojo.require("dijit.form.ValidationTextBox");
                 //检查重复密码是否和密码一致的验证函数。
    		        function repeadPassword(constraints){
 			        return document.getElementById("FormView1_PasswordTextBox").value;

@@ -27,8 +27,6 @@ namespace BLL {
         
         private DonationDataTable tableDonation;
         
-        private UserRelationShipDataTable tableUserRelationShip;
-        
         private UserDataTable tableUser;
         
         private ProjectDataTable tableProject;
@@ -41,13 +39,11 @@ namespace BLL {
         
         private V_FormatedUserDataTable tableV_FormatedUser;
         
+        private UserRelationShipDataTable tableUserRelationShip;
+        
         private System.Data.DataRelation relationFK_User_User;
         
         private System.Data.DataRelation relationFK_Donation_User;
-        
-        private System.Data.DataRelation relationFK_UserRelationShip_User;
-        
-        private System.Data.DataRelation relationFK_UserRelationShip_User1;
         
         private System.Data.DataRelation relationFK_Donation_Project;
         
@@ -58,6 +54,12 @@ namespace BLL {
         private System.Data.DataRelation relationFK_Distribution_User;
         
         private System.Data.DataRelation relationFK_Distribution_User1;
+        
+        private System.Data.DataRelation relationFK_UserRelationShip_Project;
+        
+        private System.Data.DataRelation relationFK_UserRelationShip_User;
+        
+        private System.Data.DataRelation relationFK_UserRelationShip_User1;
         
         private System.Data.SchemaSerializationMode _schemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -91,9 +93,6 @@ namespace BLL {
                 if ((ds.Tables["Donation"] != null)) {
                     base.Tables.Add(new DonationDataTable(ds.Tables["Donation"]));
                 }
-                if ((ds.Tables["UserRelationShip"] != null)) {
-                    base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
-                }
                 if ((ds.Tables["User"] != null)) {
                     base.Tables.Add(new UserDataTable(ds.Tables["User"]));
                 }
@@ -111,6 +110,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["V_FormatedUser"] != null)) {
                     base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
+                }
+                if ((ds.Tables["UserRelationShip"] != null)) {
+                    base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -145,15 +147,6 @@ namespace BLL {
         public DonationDataTable Donation {
             get {
                 return this.tableDonation;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Browsable(false)]
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public UserRelationShipDataTable UserRelationShip {
-            get {
-                return this.tableUserRelationShip;
             }
         }
         
@@ -208,6 +201,15 @@ namespace BLL {
         public V_FormatedUserDataTable V_FormatedUser {
             get {
                 return this.tableV_FormatedUser;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public UserRelationShipDataTable UserRelationShip {
+            get {
+                return this.tableUserRelationShip;
             }
         }
         
@@ -276,9 +278,6 @@ namespace BLL {
                 if ((ds.Tables["Donation"] != null)) {
                     base.Tables.Add(new DonationDataTable(ds.Tables["Donation"]));
                 }
-                if ((ds.Tables["UserRelationShip"] != null)) {
-                    base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
-                }
                 if ((ds.Tables["User"] != null)) {
                     base.Tables.Add(new UserDataTable(ds.Tables["User"]));
                 }
@@ -296,6 +295,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["V_FormatedUser"] != null)) {
                     base.Tables.Add(new V_FormatedUserDataTable(ds.Tables["V_FormatedUser"]));
+                }
+                if ((ds.Tables["UserRelationShip"] != null)) {
+                    base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -339,12 +341,6 @@ namespace BLL {
                     this.tableDonation.InitVars();
                 }
             }
-            this.tableUserRelationShip = ((UserRelationShipDataTable)(base.Tables["UserRelationShip"]));
-            if ((initTable == true)) {
-                if ((this.tableUserRelationShip != null)) {
-                    this.tableUserRelationShip.InitVars();
-                }
-            }
             this.tableUser = ((UserDataTable)(base.Tables["User"]));
             if ((initTable == true)) {
                 if ((this.tableUser != null)) {
@@ -381,15 +377,22 @@ namespace BLL {
                     this.tableV_FormatedUser.InitVars();
                 }
             }
+            this.tableUserRelationShip = ((UserRelationShipDataTable)(base.Tables["UserRelationShip"]));
+            if ((initTable == true)) {
+                if ((this.tableUserRelationShip != null)) {
+                    this.tableUserRelationShip.InitVars();
+                }
+            }
             this.relationFK_User_User = this.Relations["FK_User_User"];
             this.relationFK_Donation_User = this.Relations["FK_Donation_User"];
-            this.relationFK_UserRelationShip_User = this.Relations["FK_UserRelationShip_User"];
-            this.relationFK_UserRelationShip_User1 = this.Relations["FK_UserRelationShip_User1"];
             this.relationFK_Donation_Project = this.Relations["FK_Donation_Project"];
             this.relationFK_Project_Project = this.Relations["FK_Project_Project"];
             this.relationFK_Distribution_Project = this.Relations["FK_Distribution_Project"];
             this.relationFK_Distribution_User = this.Relations["FK_Distribution_User"];
             this.relationFK_Distribution_User1 = this.Relations["FK_Distribution_User1"];
+            this.relationFK_UserRelationShip_Project = this.Relations["FK_UserRelationShip_Project"];
+            this.relationFK_UserRelationShip_User = this.Relations["FK_UserRelationShip_User"];
+            this.relationFK_UserRelationShip_User1 = this.Relations["FK_UserRelationShip_User1"];
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -403,8 +406,6 @@ namespace BLL {
             base.Tables.Add(this.tableCity);
             this.tableDonation = new DonationDataTable();
             base.Tables.Add(this.tableDonation);
-            this.tableUserRelationShip = new UserRelationShipDataTable();
-            base.Tables.Add(this.tableUserRelationShip);
             this.tableUser = new UserDataTable();
             base.Tables.Add(this.tableUser);
             this.tableProject = new ProjectDataTable();
@@ -417,6 +418,8 @@ namespace BLL {
             base.Tables.Add(this.tableV_User_Distribution_Project);
             this.tableV_FormatedUser = new V_FormatedUserDataTable();
             base.Tables.Add(this.tableV_FormatedUser);
+            this.tableUserRelationShip = new UserRelationShipDataTable();
+            base.Tables.Add(this.tableUserRelationShip);
             this.relationFK_User_User = new System.Data.DataRelation("FK_User_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUser.FatherUserIDColumn}, false);
@@ -425,14 +428,6 @@ namespace BLL {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableDonation.DonationUserIDColumn}, false);
             this.Relations.Add(this.relationFK_Donation_User);
-            this.relationFK_UserRelationShip_User = new System.Data.DataRelation("FK_UserRelationShip_User", new System.Data.DataColumn[] {
-                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
-                        this.tableUserRelationShip.SuperiorUserIDColumn}, false);
-            this.Relations.Add(this.relationFK_UserRelationShip_User);
-            this.relationFK_UserRelationShip_User1 = new System.Data.DataRelation("FK_UserRelationShip_User1", new System.Data.DataColumn[] {
-                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
-                        this.tableUserRelationShip.InferiorUserIDColumn}, false);
-            this.Relations.Add(this.relationFK_UserRelationShip_User1);
             this.relationFK_Donation_Project = new System.Data.DataRelation("FK_Donation_Project", new System.Data.DataColumn[] {
                         this.tableProject.ProjectIDColumn}, new System.Data.DataColumn[] {
                         this.tableDonation.ProjectIDColumn}, false);
@@ -453,6 +448,18 @@ namespace BLL {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableDistribution.ToUserIDColumn}, false);
             this.Relations.Add(this.relationFK_Distribution_User1);
+            this.relationFK_UserRelationShip_Project = new System.Data.DataRelation("FK_UserRelationShip_Project", new System.Data.DataColumn[] {
+                        this.tableProject.ProjectIDColumn}, new System.Data.DataColumn[] {
+                        this.tableUserRelationShip.ProjectIDColumn}, false);
+            this.Relations.Add(this.relationFK_UserRelationShip_Project);
+            this.relationFK_UserRelationShip_User = new System.Data.DataRelation("FK_UserRelationShip_User", new System.Data.DataColumn[] {
+                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
+                        this.tableUserRelationShip.SuperiorUserIDColumn}, false);
+            this.Relations.Add(this.relationFK_UserRelationShip_User);
+            this.relationFK_UserRelationShip_User1 = new System.Data.DataRelation("FK_UserRelationShip_User1", new System.Data.DataColumn[] {
+                        this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
+                        this.tableUserRelationShip.InferiorUserIDColumn}, false);
+            this.Relations.Add(this.relationFK_UserRelationShip_User1);
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -462,11 +469,6 @@ namespace BLL {
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeDonation() {
-            return false;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializeUserRelationShip() {
             return false;
         }
         
@@ -501,6 +503,11 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeUserRelationShip() {
+            return false;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -524,8 +531,6 @@ namespace BLL {
         
         public delegate void DonationRowChangeEventHandler(object sender, DonationRowChangeEvent e);
         
-        public delegate void UserRelationShipRowChangeEventHandler(object sender, UserRelationShipRowChangeEvent e);
-        
         public delegate void UserRowChangeEventHandler(object sender, UserRowChangeEvent e);
         
         public delegate void ProjectRowChangeEventHandler(object sender, ProjectRowChangeEvent e);
@@ -537,6 +542,8 @@ namespace BLL {
         public delegate void V_User_Distribution_ProjectRowChangeEventHandler(object sender, V_User_Distribution_ProjectRowChangeEvent e);
         
         public delegate void V_FormatedUserRowChangeEventHandler(object sender, V_FormatedUserRowChangeEvent e);
+        
+        public delegate void UserRelationShipRowChangeEventHandler(object sender, UserRelationShipRowChangeEvent e);
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [System.Serializable()]
@@ -1037,222 +1044,6 @@ namespace BLL {
                 System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DonationDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                return type;
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        [System.Serializable()]
-        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class UserRelationShipDataTable : System.Data.DataTable, System.Collections.IEnumerable {
-            
-            private System.Data.DataColumn columnSuperiorUserID;
-            
-            private System.Data.DataColumn columnInferiorUserID;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipDataTable() {
-                this.TableName = "UserRelationShip";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal UserRelationShipDataTable(System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected UserRelationShipDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn SuperiorUserIDColumn {
-                get {
-                    return this.columnSuperiorUserID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataColumn InferiorUserIDColumn {
-                get {
-                    return this.columnInferiorUserID;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow this[int index] {
-                get {
-                    return ((UserRelationShipRow)(this.Rows[index]));
-                }
-            }
-            
-            public event UserRelationShipRowChangeEventHandler UserRelationShipRowChanging;
-            
-            public event UserRelationShipRowChangeEventHandler UserRelationShipRowChanged;
-            
-            public event UserRelationShipRowChangeEventHandler UserRelationShipRowDeleting;
-            
-            public event UserRelationShipRowChangeEventHandler UserRelationShipRowDeleted;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddUserRelationShipRow(UserRelationShipRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow AddUserRelationShipRow(UserRow parentUserRowByFK_UserRelationShip_User, UserRow parentUserRowByFK_UserRelationShip_User1) {
-                UserRelationShipRow rowUserRelationShipRow = ((UserRelationShipRow)(this.NewRow()));
-                rowUserRelationShipRow.ItemArray = new object[] {
-                        parentUserRowByFK_UserRelationShip_User[0],
-                        parentUserRowByFK_UserRelationShip_User1[0]};
-                this.Rows.Add(rowUserRelationShipRow);
-                return rowUserRelationShipRow;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow FindBySuperiorUserIDInferiorUserID(int SuperiorUserID, int InferiorUserID) {
-                return ((UserRelationShipRow)(this.Rows.Find(new object[] {
-                            SuperiorUserID,
-                            InferiorUserID})));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public virtual System.Collections.IEnumerator GetEnumerator() {
-                return this.Rows.GetEnumerator();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public override System.Data.DataTable Clone() {
-                UserRelationShipDataTable cln = ((UserRelationShipDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Data.DataTable CreateInstance() {
-                return new UserRelationShipDataTable();
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal void InitVars() {
-                this.columnSuperiorUserID = base.Columns["SuperiorUserID"];
-                this.columnInferiorUserID = base.Columns["InferiorUserID"];
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            private void InitClass() {
-                this.columnSuperiorUserID = new System.Data.DataColumn("SuperiorUserID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSuperiorUserID);
-                this.columnInferiorUserID = new System.Data.DataColumn("InferiorUserID", typeof(int), null, System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInferiorUserID);
-                this.Constraints.Add(new System.Data.UniqueConstraint("Constraint1", new System.Data.DataColumn[] {
-                                this.columnSuperiorUserID,
-                                this.columnInferiorUserID}, true));
-                this.columnSuperiorUserID.AllowDBNull = false;
-                this.columnInferiorUserID.AllowDBNull = false;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow NewUserRelationShipRow() {
-                return ((UserRelationShipRow)(this.NewRow()));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
-                return new UserRelationShipRow(builder);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override System.Type GetRowType() {
-                return typeof(UserRelationShipRow);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.UserRelationShipRowChanged != null)) {
-                    this.UserRelationShipRowChanged(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.UserRelationShipRowChanging != null)) {
-                    this.UserRelationShipRowChanging(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.UserRelationShipRowDeleted != null)) {
-                    this.UserRelationShipRowDeleted(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.UserRelationShipRowDeleting != null)) {
-                    this.UserRelationShipRowDeleting(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemoveUserRelationShipRow(UserRelationShipRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
-                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
-                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
-                VCFDataSet ds = new VCFDataSet();
-                xs.Add(ds.GetSchemaSerializable());
-                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "UserRelationShipDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 return type;
@@ -3334,6 +3125,238 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class UserRelationShipDataTable : System.Data.DataTable, System.Collections.IEnumerable {
+            
+            private System.Data.DataColumn columnSuperiorUserID;
+            
+            private System.Data.DataColumn columnInferiorUserID;
+            
+            private System.Data.DataColumn columnProjectID;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipDataTable() {
+                this.TableName = "UserRelationShip";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal UserRelationShipDataTable(System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected UserRelationShipDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn SuperiorUserIDColumn {
+                get {
+                    return this.columnSuperiorUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn InferiorUserIDColumn {
+                get {
+                    return this.columnInferiorUserID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn ProjectIDColumn {
+                get {
+                    return this.columnProjectID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow this[int index] {
+                get {
+                    return ((UserRelationShipRow)(this.Rows[index]));
+                }
+            }
+            
+            public event UserRelationShipRowChangeEventHandler UserRelationShipRowChanging;
+            
+            public event UserRelationShipRowChangeEventHandler UserRelationShipRowChanged;
+            
+            public event UserRelationShipRowChangeEventHandler UserRelationShipRowDeleting;
+            
+            public event UserRelationShipRowChangeEventHandler UserRelationShipRowDeleted;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddUserRelationShipRow(UserRelationShipRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow AddUserRelationShipRow(UserRow parentUserRowByFK_UserRelationShip_User, UserRow parentUserRowByFK_UserRelationShip_User1, ProjectRow parentProjectRowByFK_UserRelationShip_Project) {
+                UserRelationShipRow rowUserRelationShipRow = ((UserRelationShipRow)(this.NewRow()));
+                rowUserRelationShipRow.ItemArray = new object[] {
+                        parentUserRowByFK_UserRelationShip_User[0],
+                        parentUserRowByFK_UserRelationShip_User1[0],
+                        parentProjectRowByFK_UserRelationShip_Project[0]};
+                this.Rows.Add(rowUserRelationShipRow);
+                return rowUserRelationShipRow;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow FindBySuperiorUserIDInferiorUserIDProjectID(int SuperiorUserID, int InferiorUserID, int ProjectID) {
+                return ((UserRelationShipRow)(this.Rows.Find(new object[] {
+                            SuperiorUserID,
+                            InferiorUserID,
+                            ProjectID})));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override System.Data.DataTable Clone() {
+                UserRelationShipDataTable cln = ((UserRelationShipDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataTable CreateInstance() {
+                return new UserRelationShipDataTable();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnSuperiorUserID = base.Columns["SuperiorUserID"];
+                this.columnInferiorUserID = base.Columns["InferiorUserID"];
+                this.columnProjectID = base.Columns["ProjectID"];
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnSuperiorUserID = new System.Data.DataColumn("SuperiorUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSuperiorUserID);
+                this.columnInferiorUserID = new System.Data.DataColumn("InferiorUserID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInferiorUserID);
+                this.columnProjectID = new System.Data.DataColumn("ProjectID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProjectID);
+                this.Constraints.Add(new System.Data.UniqueConstraint("Constraint1", new System.Data.DataColumn[] {
+                                this.columnSuperiorUserID,
+                                this.columnInferiorUserID,
+                                this.columnProjectID}, true));
+                this.columnSuperiorUserID.AllowDBNull = false;
+                this.columnInferiorUserID.AllowDBNull = false;
+                this.columnProjectID.AllowDBNull = false;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow NewUserRelationShipRow() {
+                return ((UserRelationShipRow)(this.NewRow()));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
+                return new UserRelationShipRow(builder);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Type GetRowType() {
+                return typeof(UserRelationShipRow);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.UserRelationShipRowChanged != null)) {
+                    this.UserRelationShipRowChanged(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.UserRelationShipRowChanging != null)) {
+                    this.UserRelationShipRowChanging(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.UserRelationShipRowDeleted != null)) {
+                    this.UserRelationShipRowDeleted(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.UserRelationShipRowDeleting != null)) {
+                    this.UserRelationShipRowDeleting(this, new UserRelationShipRowChangeEvent(((UserRelationShipRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveUserRelationShipRow(UserRelationShipRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
+                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
+                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
+                VCFDataSet ds = new VCFDataSet();
+                xs.Add(ds.GetSchemaSerializable());
+                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "UserRelationShipDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                return type;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class CityRow : System.Data.DataRow {
             
             private CityDataTable tableCity;
@@ -3463,58 +3486,6 @@ namespace BLL {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Donation_Project"]);
-                }
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class UserRelationShipRow : System.Data.DataRow {
-            
-            private UserRelationShipDataTable tableUserRelationShip;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal UserRelationShipRow(System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableUserRelationShip = ((UserRelationShipDataTable)(this.Table));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int SuperiorUserID {
-                get {
-                    return ((int)(this[this.tableUserRelationShip.SuperiorUserIDColumn]));
-                }
-                set {
-                    this[this.tableUserRelationShip.SuperiorUserIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int InferiorUserID {
-                get {
-                    return ((int)(this[this.tableUserRelationShip.InferiorUserIDColumn]));
-                }
-                set {
-                    this[this.tableUserRelationShip.InferiorUserIDColumn] = value;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRow UserRowByFK_UserRelationShip_User {
-                get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserRelationShip_User"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_UserRelationShip_User"]);
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRow UserRowByFK_UserRelationShip_User1 {
-                get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserRelationShip_User1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_UserRelationShip_User1"]);
                 }
             }
         }
@@ -3921,16 +3892,6 @@ namespace BLL {
             }
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow[] GetUserRelationShipRowsByFK_UserRelationShip_User() {
-                return ((UserRelationShipRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserRelationShip_User"])));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow[] GetUserRelationShipRowsByFK_UserRelationShip_User1() {
-                return ((UserRelationShipRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserRelationShip_User1"])));
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProjectRow[] GetProjectRows() {
                 return ((ProjectRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Project_Project"])));
             }
@@ -3943,6 +3904,16 @@ namespace BLL {
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DistributionRow[] GetDistributionRowsByFK_Distribution_User1() {
                 return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_User1"])));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow[] GetUserRelationShipRowsByFK_UserRelationShip_User() {
+                return ((UserRelationShipRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserRelationShip_User"])));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow[] GetUserRelationShipRowsByFK_UserRelationShip_User1() {
+                return ((UserRelationShipRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserRelationShip_User1"])));
             }
         }
         
@@ -4035,6 +4006,11 @@ namespace BLL {
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DistributionRow[] GetDistributionRows() {
                 return ((DistributionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Distribution_Project"])));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow[] GetUserRelationShipRows() {
+                return ((UserRelationShipRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserRelationShip_Project"])));
             }
         }
         
@@ -4667,6 +4643,78 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class UserRelationShipRow : System.Data.DataRow {
+            
+            private UserRelationShipDataTable tableUserRelationShip;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal UserRelationShipRow(System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableUserRelationShip = ((UserRelationShipDataTable)(this.Table));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int SuperiorUserID {
+                get {
+                    return ((int)(this[this.tableUserRelationShip.SuperiorUserIDColumn]));
+                }
+                set {
+                    this[this.tableUserRelationShip.SuperiorUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int InferiorUserID {
+                get {
+                    return ((int)(this[this.tableUserRelationShip.InferiorUserIDColumn]));
+                }
+                set {
+                    this[this.tableUserRelationShip.InferiorUserIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ProjectID {
+                get {
+                    return ((int)(this[this.tableUserRelationShip.ProjectIDColumn]));
+                }
+                set {
+                    this[this.tableUserRelationShip.ProjectIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ProjectRow ProjectRow {
+                get {
+                    return ((ProjectRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserRelationShip_Project"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_UserRelationShip_Project"]);
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRow UserRowByFK_UserRelationShip_User {
+                get {
+                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserRelationShip_User"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_UserRelationShip_User"]);
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRow UserRowByFK_UserRelationShip_User1 {
+                get {
+                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserRelationShip_User1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_UserRelationShip_User1"]);
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public class CityRowChangeEvent : System.EventArgs {
             
             private CityRow eventRow;
@@ -4709,34 +4757,6 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DonationRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class UserRelationShipRowChangeEvent : System.EventArgs {
-            
-            private UserRelationShipRow eventRow;
-            
-            private System.Data.DataRowAction eventAction;
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRowChangeEvent(UserRelationShipRow row, System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public UserRelationShipRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4905,6 +4925,34 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public V_FormatedUserRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class UserRelationShipRowChangeEvent : System.EventArgs {
+            
+            private UserRelationShipRow eventRow;
+            
+            private System.Data.DataRowAction eventAction;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRowChangeEvent(UserRelationShipRow row, System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public UserRelationShipRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5354,12 +5402,21 @@ SELECT DonationID, DonationUserID, BankAccount, Money, DonationDate, ProjectID F
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DonationID, DonationUserID, BankAccount, Money, DonationDate, ProjectID FR" +
                 "OM dbo.Donation";
             this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[Donation] ([DonationUserID], [BankAccount], [Money], [ProjectI" +
+                "D]) VALUES (@DonationUserID, @BankAccount, @Money, @ProjectID);";
+            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DonationUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "DonationUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@BankAccount", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "BankAccount", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5511,249 +5568,36 @@ SELECT DonationID, DonationUserID, BankAccount, Money, DonationDate, ProjectID F
                 }
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.ComponentModel.ToolboxItem(true)]
-    [System.ComponentModel.DataObjectAttribute(true)]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class UserRelationShipTableAdapter : System.ComponentModel.Component {
-        
-        private System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private System.Data.SqlClient.SqlConnection _connection;
-        
-        private System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public UserRelationShipTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitAdapter() {
-            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
-            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "UserRelationShip";
-            tableMapping.ColumnMappings.Add("SuperiorUserID", "SuperiorUserID");
-            tableMapping.ColumnMappings.Add("InferiorUserID", "InferiorUserID");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[UserRelationShip] WHERE (([SuperiorUserID] = @Original_Superio" +
-                "rUserID) AND ([InferiorUserID] = @Original_InferiorUserID))";
-            this._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[UserRelationShip] ([SuperiorUserID], [InferiorUserID]) VALUES (@SuperiorUserID, @InferiorUserID);
-SELECT SuperiorUserID, InferiorUserID FROM UserRelationShip WHERE (InferiorUserID = @InferiorUserID) AND (SuperiorUserID = @SuperiorUserID)";
-            this._adapter.InsertCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[UserRelationShip] SET [SuperiorUserID] = @SuperiorUserID, [InferiorUserID] = @InferiorUserID WHERE (([SuperiorUserID] = @Original_SuperiorUserID) AND ([InferiorUserID] = @Original_InferiorUserID));
-SELECT SuperiorUserID, InferiorUserID FROM UserRelationShip WHERE (InferiorUserID = @InferiorUserID) AND (SuperiorUserID = @SuperiorUserID)";
-            this._adapter.UpdateCommand.CommandType = System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitConnection() {
-            this._connection = new System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SuperiorUserID, InferiorUserID FROM dbo.UserRelationShip";
-            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
-        }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(VCFDataSet.UserRelationShipDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int Donor(int DonationUserID, string BankAccount, decimal Money, int ProjectID) {
+            System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(DonationUserID));
+            if ((BankAccount == null)) {
+                throw new System.ArgumentNullException("BankAccount");
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            else {
+                command.Parameters[1].Value = ((string)(BankAccount));
+            }
+            command.Parameters[2].Value = ((decimal)(Money));
+            command.Parameters[3].Value = ((int)(ProjectID));
+            System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
             return returnValue;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual VCFDataSet.UserRelationShipDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            VCFDataSet.UserRelationShipDataTable dataTable = new VCFDataSet.UserRelationShipDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(VCFDataSet.UserRelationShipDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(VCFDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "UserRelationShip");
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_SuperiorUserID, int Original_InferiorUserID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_SuperiorUserID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_InferiorUserID));
-            System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int SuperiorUserID, int InferiorUserID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SuperiorUserID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(InferiorUserID));
-            System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SuperiorUserID, int InferiorUserID, int Original_SuperiorUserID, int Original_InferiorUserID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SuperiorUserID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(InferiorUserID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_SuperiorUserID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_InferiorUserID));
-            System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
-                        != System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
         }
     }
     
@@ -7152,7 +6996,8 @@ SELECT ProjectID, Name, Discription, ManagerID, CreateDate, IsActive FROM Projec
             this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Name\r\nFROM Project\r\nWHERE (ProjectID = @projectID)";
+            this._commandCollection[4].CommandText = "SELECT CreateDate, Discription, IsActive, ManagerID, Name, ProjectID FROM Project" +
+                " WHERE (ProjectID = @projectID)";
             this._commandCollection[4].CommandType = System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@projectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
@@ -7171,20 +7016,8 @@ SELECT ProjectID, Name, Discription, ManagerID, CreateDate, IsActive FROM Projec
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(VCFDataSet.ProjectDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual VCFDataSet.ProjectDataTable GetData() {
+        public virtual VCFDataSet.ProjectDataTable GetAllProject() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             VCFDataSet.ProjectDataTable dataTable = new VCFDataSet.ProjectDataTable();
             this.Adapter.Fill(dataTable);
@@ -7194,7 +7027,7 @@ SELECT ProjectID, Name, Discription, ManagerID, CreateDate, IsActive FROM Projec
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual VCFDataSet.ProjectDataTable GetProjectNameByProjectID(int projectID) {
+        public virtual VCFDataSet.ProjectDataTable GetProjectByProjectID(int projectID) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(projectID));
             VCFDataSet.ProjectDataTable dataTable = new VCFDataSet.ProjectDataTable();
@@ -8296,16 +8129,16 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
                 "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, RoleString, FatherU" +
-                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where UserID=@UserID";
+                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where (Role=@Role)";
             this._commandCollection[1].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Role", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "Role", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
                 "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, RoleString, FatherU" +
-                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where (Role=@Role)";
+                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where UserID=@UserID";
             this._commandCollection[2].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Role", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "Role", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8333,9 +8166,9 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual VCFDataSet.V_FormatedUserDataTable GetUserByUserID(int UserID) {
+        public virtual VCFDataSet.V_FormatedUserDataTable GetUserByRole(int Role) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Role));
             VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -8344,12 +8177,266 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual VCFDataSet.V_FormatedUserDataTable GetUserByRole(int Role) {
+        public virtual VCFDataSet.V_FormatedUserDataTable GetUserByUserID(int UserID) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Role));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
             VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.ToolboxItem(true)]
+    [System.ComponentModel.DataObjectAttribute(true)]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class UserRelationShipTableAdapter : System.ComponentModel.Component {
+        
+        private System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private System.Data.SqlClient.SqlConnection _connection;
+        
+        private System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public UserRelationShipTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
+            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "UserRelationShip";
+            tableMapping.ColumnMappings.Add("SuperiorUserID", "SuperiorUserID");
+            tableMapping.ColumnMappings.Add("InferiorUserID", "InferiorUserID");
+            tableMapping.ColumnMappings.Add("ProjectID", "ProjectID");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[UserRelationShip] WHERE (([SuperiorUserID] = @Original_Superio" +
+                "rUserID) AND ([InferiorUserID] = @Original_InferiorUserID) AND ([ProjectID] = @O" +
+                "riginal_ProjectID))";
+            this._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[UserRelationShip] ([SuperiorUserID], [InferiorUserID], [ProjectID]) VALUES (@SuperiorUserID, @InferiorUserID, @ProjectID);
+SELECT SuperiorUserID, InferiorUserID, ProjectID FROM UserRelationShip WHERE (InferiorUserID = @InferiorUserID) AND (ProjectID = @ProjectID) AND (SuperiorUserID = @SuperiorUserID)";
+            this._adapter.InsertCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[UserRelationShip] SET [SuperiorUserID] = @SuperiorUserID, [InferiorUserID] = @InferiorUserID, [ProjectID] = @ProjectID WHERE (([SuperiorUserID] = @Original_SuperiorUserID) AND ([InferiorUserID] = @Original_InferiorUserID) AND ([ProjectID] = @Original_ProjectID));
+SELECT SuperiorUserID, InferiorUserID, ProjectID FROM UserRelationShip WHERE (InferiorUserID = @InferiorUserID) AND (ProjectID = @ProjectID) AND (SuperiorUserID = @SuperiorUserID)";
+            this._adapter.UpdateCommand.CommandType = System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_SuperiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_InferiorUserID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Original_ProjectID", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT SuperiorUserID, InferiorUserID, ProjectID FROM dbo.UserRelationShip";
+            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(VCFDataSet.UserRelationShipDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual VCFDataSet.UserRelationShipDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            VCFDataSet.UserRelationShipDataTable dataTable = new VCFDataSet.UserRelationShipDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(VCFDataSet.UserRelationShipDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(VCFDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "UserRelationShip");
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_SuperiorUserID, int Original_InferiorUserID, int Original_ProjectID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_SuperiorUserID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_InferiorUserID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ProjectID));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int SuperiorUserID, int InferiorUserID, int ProjectID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SuperiorUserID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(InferiorUserID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ProjectID));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int SuperiorUserID, int InferiorUserID, int ProjectID, int Original_SuperiorUserID, int Original_InferiorUserID, int Original_ProjectID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SuperiorUserID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(InferiorUserID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ProjectID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_SuperiorUserID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_InferiorUserID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ProjectID));
+            System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
         }
     }
 }

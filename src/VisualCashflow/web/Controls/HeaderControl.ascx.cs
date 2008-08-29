@@ -16,7 +16,7 @@ public partial class Controls_HeaderControl : System.Web.UI.UserControl
     {
         App_Code.SessionManager sm = new App_Code.SessionManager(this.Page);
 
-        ViewLink.Visible = true;
+        DonationListLink.Visible = true;
 
         if (!_RequireLogin)
         {
@@ -39,7 +39,11 @@ public partial class Controls_HeaderControl : System.Web.UI.UserControl
             }
             else if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Beneficiary))
                 ;
+            else if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Donor))
+            {
 
+                DonationLink.Visible = true;
+            }
 
         }
         else{

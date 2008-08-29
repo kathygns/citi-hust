@@ -8,9 +8,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>无标题页</title>
+    <title>资金可视化系统-登陆</title>
 </head>
-<body>
+<body class="tundra">
     <form id="form1" runat="server">
     <div>
         <uc2:HeaderControl ID="HeaderControl1" runat="server" RequireLogin="false"/>

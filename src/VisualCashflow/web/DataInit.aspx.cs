@@ -26,7 +26,7 @@ public partial class DataInit : System.Web.UI.Page
         //add Doner
         for (int ii = 0; ii < 10; ii++)
         {
-            uta.AddDonor("Doner" + ii, "passwd", "SecureQuestion", "SecureAnswer", "Photo", randomChineseName(3)+ii, true, 30, "tel", "email", "addr", "comment");
+            uta.AddDonor("Donor" + ii, "passwd", "SecureQuestion", "SecureAnswer", "Photo", randomChineseName(3)+ii, true, 30, "tel", "email", "addr", "comment");
         }
         //add Manager
         for (int ii = 0; ii < 10; ii++)
