@@ -22,7 +22,7 @@
                 <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
                 </cc1:ToolkitScriptManager>
                 <asp:ObjectDataSource ID="ProjectDataSource" runat="server" DeleteMethod="DeleteByProjectID"
-                    InsertMethod="AddProject" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData"
+                    InsertMethod="AddProject" OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllProject"
                     TypeName="BLL.VCFDataSetTableAdapters.ProjectTableAdapter" UpdateMethod="UpdateByProjectID">
                     <DeleteParameters>
                         <asp:Parameter Name="Original_ProjectID" Type="Int32" />
@@ -96,35 +96,9 @@
                                 
                                              
                                 </asp:TemplateField>
-                   
-        
-                                <asp:TemplateField ShowHeader="False">
-                                    <EditItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
-                                            Text="">
-                                            <asp:Image ID="Image2" ImageUrl="images/icons/accept.png" runat="server" />
-                                        </asp:LinkButton>
-                                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
-                                            Text="">
-                                            <asp:Image ID="Image3" ImageUrl="images/icons/undo.png" runat="server" />
-                                        </asp:LinkButton>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit"
-                                            Text="">
-                                            <asp:Image ID="Image1" ImageUrl="images/icons/edit.png" runat="server" />
-                                        </asp:LinkButton>
-                                        <!-- 
-                                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Delete"
-                                            Text="">
-                                            <asp:Image ID="imgDelete" ImageUrl="images/icons/cross.png" runat="server" />
-                                        </asp:LinkButton>
-                                        -->
-                                        
-                                    </ItemTemplate>
-                                    <ItemStyle Width="50px" />
-                                </asp:TemplateField>
+
                                 <asp:ButtonField CommandName="DeActive" Text="停止" />
+                                
                             </Columns>
                             
                             <EditRowStyle BackColor="#2461BF" />

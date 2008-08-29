@@ -25,6 +25,7 @@
         dojo.require("dojo.parser");
         dojo.require("dijit.form.TextBox");
         dojo.require("dijit.Tooltip");
+        dojo.require("dijit.form.ValidationTextBox");
         
 </script>
 
@@ -38,9 +39,12 @@
         
         
         
-        <asp:HyperLink ID="ViewLink" runat="server" NavigateUrl="/web/View.aspx" Visible="false">查看</asp:HyperLink>
+        <asp:HyperLink ID="DonationListLink" runat="server" NavigateUrl="/web/DonationList.aspx" Visible="false">捐款列表</asp:HyperLink>
         
-        <asp:HyperLink ID="DonerLink" runat="server" NavigateUrl="/web/捐款.aspx" Visible="false">捐款</asp:HyperLink>
+        
+        
+        
+        <asp:HyperLink ID="DonationLink" runat="server" NavigateUrl="/web/Donation.aspx" Visible="false">捐款</asp:HyperLink>
         
         
         <asp:HyperLink ID="ProjectLink" runat="server" NavigateUrl="/web/Project.aspx" Visible="false">项目管理</asp:HyperLink>
@@ -59,7 +63,7 @@
 <b><asp:Label ID="UserNameLabel" runat="server" Text="UserName" Visible="false"></asp:Label></b>
 
 |
-<asp:HyperLink ID="EditProfileLink" runat="server" NavigateUrl="/web/UserProfile.aspx" Visible="false">修改用户信息</asp:HyperLink>
+<asp:HyperLink ID="EditProfileLink" runat="server" NavigateUrl="/web/UserProfile.aspx" Visible="false">修改个人信息</asp:HyperLink>
 <asp:HyperLink ID="RegisterLink" runat="server" NavigateUrl="/web/Register.aspx" Visible="false">注册</asp:HyperLink>
 |
 <a href="/web/Help.aspx">帮助</a>

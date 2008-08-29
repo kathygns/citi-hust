@@ -2,7 +2,7 @@
 <%@ Register Src="UserDetailControl.ascx" TagName="UserDetailControl" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-<script language="javascript">
+<script  type="text/javascript" language="javascript">
 
 function handlerPopup(e){
     x = (document.layers) ? e.pageX : event.clientX
@@ -53,5 +53,5 @@ style="display: none;"
         dojotype="dijit.Tooltip" 
         widgetid="dijit_Tooltip_0"
 >
-    &nbsp;<uc1:UserDetailControl id="UserDetailControl1" runat="server"></uc1:UserDetailControl>
+    <uc1:UserDetailControl id="UserDetailControl1" runat="server"></uc1:UserDetailControl>
 </asp:Panel>

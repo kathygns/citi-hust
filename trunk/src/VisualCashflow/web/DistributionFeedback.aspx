@@ -25,10 +25,6 @@
         </asp:ObjectDataSource>
         <br />
         <uc1:HeaderControl ID="HeaderControl1" runat="server" />
-
-        <script type="text/javascript">
-           dojo.require("dijit.form.ValidationTextBox");
-        </script>
         
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
