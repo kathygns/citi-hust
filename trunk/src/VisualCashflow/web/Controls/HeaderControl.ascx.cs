@@ -30,24 +30,38 @@ public partial class Controls_HeaderControl : System.Web.UI.UserControl
             UserNameLabel.Visible = true;
             EditProfileLink.Visible = true;
             LogOutLink.Visible = true;
-            if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Admin))
-            {
-                ProjectLink.Visible = true;
-                UserManagementLink.Visible = true;
-                AddProjectLink.Visible = true;
-                CreateUserLink.Visible = true;
-            }
-            else if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Beneficiary))
-                ;
-            else if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Donor))
-            {
 
+
+            if (u.Role == Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Donor))
+            {
                 DonationLink.Visible = true;
             }
+/*
+ *这里用<=是因为0123分别表示admin/manager/bene/donor
+ */
+
+            if (u.Role <= Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Beneficiary))
+            {
+                DistributionLink.Visible = true;
+            }
+            if (u.Role <= Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Manager))
+            {
+                UserManagementLink.Visible = true;
+                CreateUserLink.Visible = true;
+            }
+            if (u.Role <= Convert.ToInt16(BLL.VCFDataSet.UserDataTable.UserRoles.Admin))
+            {
+                ProjectLink.Visible = true;
+                AddProjectLink.Visible = true;
+                
+            }
+            
 
         }
         else{
+            LoginLink.Visible = true;
             RegisterLink.Visible = true;
+
 
         }
     }

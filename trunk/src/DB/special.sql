@@ -1,91 +1,51 @@
-
-use VCF;
-/*
-清空
-*/
-delete from [dbo].[Distribution];
-delete from [dbo].[Project];
-delete from [dbo].[User];
-
-
-/*
-插入默认的管理员.
-*/
-SET IDENTITY_INSERT [dbo].[User] ON
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
 go
 
-INSERT INTO [dbo].[User] (
-[UserID],
-[UserName],
- [Password],
- [SecureQuestion],
- [SecureAnswer],
- [Role],
- [Photo],
- [RealName],
- [Sex],
- [Age],
- [Tel],
- [Email],
- [Address],
- [Comment],
+
+ALTER PROCEDURE [dbo].[Donate]
+	
+	@DonationUserID int,  
+	@BankAccount varchar(50), 
+	@Money money,
+	@ProjectID int
+	
+AS
+BEGIN
+
+
+INSERT INTO [dbo].[Donation] ([DonationUserID],
  [BankAccount],
- [IdentityCard],
- [Position],
- [FatherUserID]) VALUES (
-'0',
-'admin',
- 'admin',
- 'SecureQuestion',
- 'SecureAnswer',
- 0,
- 'Photo',
- 'RealName',
- 'true',
- 30,
- 'Tel',
- 'Email',
- 'Address',
- 'Comment',
-
- 'admin',
- 'admin',
- 'Position',
- '0');
-
+ [Money],
+ [ProjectID]) VALUES (@DonationUserID,
+ @BankAccount,
+ @Money,
+ @ProjectID);
  
- /*插入-1*/
- INSERT INTO [dbo].[User] (
-[UserID],
-[UserName],
- [Password],
- [SecureQuestion],
- [SecureAnswer],
- [Role],
- [Photo],
- [RealName],
- [Sex],
- [Age],
- [Tel],
- [Email],
- [Address],
- [Comment],
- [Position],
- [FatherUserID]) VALUES (
-'-1',
-'0',
- '0',
- '0',
- '0',
- 0,
- 'Photo',
- '无意义',
- 'true',
- 30,
- 'Tel',
- 'Email',
- 'Address',
- 'Comment',
 
- 'Position',
- '0');
+/*@managerID ;*/
+ declare @managerID integer;
+ select @managerID= [ManagerID] FROM [dbo].[Project] where ([ProjectID] =@ProjectID)
+
+INSERT INTO [dbo].[Distribution] (
+ [FromUserID],
+ [ToUserID],
+ [DistributionType],
+ [Purpose],
+ [ProjectID],
+ 
+ [Money],
+ [FeedbackStatus]
+ ) VALUES (
+ @DonationUserID,
+ @managerID,
+ 0,
+ '捐款',
+ @ProjectID,
+  @Money,
+ 2);
+
+
+
+END
+

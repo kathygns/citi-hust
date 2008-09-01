@@ -17,11 +17,12 @@ public partial class DataInit : System.Web.UI.Page
 
     }
 
-
+    BLL.VCFDataSetTableAdapters.UserTableAdapter uta = new BLL.VCFDataSetTableAdapters.UserTableAdapter();
+    BLL.VCFDataSetTableAdapters.ProjectTableAdapter pta = new BLL.VCFDataSetTableAdapters.ProjectTableAdapter();
     protected void Init_Click(object sender, EventArgs e)
     {
         
-        BLL.VCFDataSetTableAdapters.UserTableAdapter uta = new BLL.VCFDataSetTableAdapters.UserTableAdapter();
+        
         //dbo.User中默认有Admin的
         //add Doner
         for (int ii = 0; ii < 10; ii++)
@@ -33,7 +34,7 @@ public partial class DataInit : System.Web.UI.Page
             uta.AddManager("Manager" + ii, "passwd", "SecureQuestion", "SecureAnswer", "Photo", randomChineseName(3) + ii, true, 30, "tel", "email", "addr", "comment", "bankAccount" + ii, "IdentiryCard" + ii, "position", 0);
 
         //add project
-        BLL.VCFDataSetTableAdapters.ProjectTableAdapter pta = new BLL.VCFDataSetTableAdapters.ProjectTableAdapter();
+        
         for (int ii = 0; ii < 10; ii++)
             pta.AddProject("Project" + Convert.ToString(ii), randomChineseName(120),uta.GetUserByUserName("Manager"+ii/2)[0].UserID);
     }
@@ -48,5 +49,17 @@ public partial class DataInit : System.Web.UI.Page
         for (int ii=0;ii<len;ii++)
             rst+=s[r.Next(s.Length)];
         return rst;
+    }
+    BLL.VCFDataSetTableAdapters.DonationTableAdapter dta = new BLL.VCFDataSetTableAdapters.DonationTableAdapter();
+    BLL.VCFDataSetTableAdapters.DistributionTableAdapter dista = new BLL.VCFDataSetTableAdapters.DistributionTableAdapter();
+
+
+    protected void DistributionButton_Click(object sender, EventArgs e)
+    {
+
+        dta.Donate(uta.GetUserByUserName("Donor" + 1)[0].UserID, "1111111111111111", 1000, pta.GetAllProject()[0].ProjectID);
+        dta.Donate(uta.GetUserByUserName("Donor" + 2)[0].UserID, "1111111111111111", 1000, pta.GetAllProject()[0].ProjectID);
+        
+        //dista.
     }
 }

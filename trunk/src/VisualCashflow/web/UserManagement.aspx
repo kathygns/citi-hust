@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UserManagement.aspx.cs" Inherits="UserManagement" %>
 
+<%@ Register Src="Controls/UserChooserControl.ascx" TagName="UserChooserControl"
+    TagPrefix="uc2" %>
+
 <%@ Register Src="Controls/HeaderControl.ascx" TagName="HeaderControl" TagPrefix="uc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,6 +20,8 @@
 
 <div id="userInfo" align="right" width="100%" style="padding: 0pt 0pt 4px; font-size: 84%;">
         <nobr>
+<a href="/web/UserManagement.aspx">下级</a>
+
 
 <a href="/web/UserManagement.aspx?Role=1">管理员</a>
 |
@@ -65,8 +70,12 @@
                 <asp:QueryStringParameter DefaultValue="0" Name="Role" QueryStringField="Role" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
-    
-    </div>
+        <br />
+        添加下级管理员：<br />
+        &nbsp;<uc2:UserChooserControl ID="UserChooserControl1" runat="server" />
+        <br />
+        <asp:Button ID="AddInferiorButton" runat="server" OnClick="AddInferiorButton_Click"
+            Text="添加" Width="103px" /></div>
     </form>
 </body>
 </html>

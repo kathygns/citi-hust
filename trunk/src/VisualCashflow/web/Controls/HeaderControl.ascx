@@ -40,11 +40,14 @@
         
         
         <asp:HyperLink ID="DonationListLink" runat="server" NavigateUrl="/web/DonationList.aspx" Visible="false">捐款列表</asp:HyperLink>
-        
-        
-        
-        
         <asp:HyperLink ID="DonationLink" runat="server" NavigateUrl="/web/Donation.aspx" Visible="false">捐款</asp:HyperLink>
+        
+        <asp:HyperLink ID="DistributionLink" runat="server" NavigateUrl="/web/Distribution.aspx" Visible="false">分配资金</asp:HyperLink>
+        
+        
+        
+        
+        
         
         
         <asp:HyperLink ID="ProjectLink" runat="server" NavigateUrl="/web/Project.aspx" Visible="false">项目管理</asp:HyperLink>
@@ -64,7 +67,10 @@
 
 |
 <asp:HyperLink ID="EditProfileLink" runat="server" NavigateUrl="/web/UserProfile.aspx" Visible="false">修改个人信息</asp:HyperLink>
+<asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="/web/Login.aspx" Visible="false">登陆</asp:HyperLink>
 <asp:HyperLink ID="RegisterLink" runat="server" NavigateUrl="/web/Register.aspx" Visible="false">注册</asp:HyperLink>
+
+
 |
 <a href="/web/Help.aspx">帮助</a>
 |

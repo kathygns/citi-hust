@@ -18,7 +18,7 @@
         <uc1:HeaderControl ID="HeaderControl1" runat="server" />
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
             AutoGenerateColumns="False" CellPadding="4" DataKeyNames="DonationID" DataSourceID="DonationDataSource"
-            ForeColor="#333333" GridLines="None" Width="794px">
+            ForeColor="#333333" GridLines="None" Width="794px" PageSize="30">
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <Columns>
                 <asp:TemplateField HeaderText="捐款人" SortExpression="DonationUserID">
