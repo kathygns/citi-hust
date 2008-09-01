@@ -41,6 +41,8 @@ namespace BLL {
         
         private UserRelationShipDataTable tableUserRelationShip;
         
+        private V_ProjectNameAndIDDataTable tableV_ProjectNameAndID;
+        
         private System.Data.DataRelation relationFK_User_User;
         
         private System.Data.DataRelation relationFK_Donation_User;
@@ -113,6 +115,9 @@ namespace BLL {
                 }
                 if ((ds.Tables["UserRelationShip"] != null)) {
                     base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
+                }
+                if ((ds.Tables["V_ProjectNameAndID"] != null)) {
+                    base.Tables.Add(new V_ProjectNameAndIDDataTable(ds.Tables["V_ProjectNameAndID"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -214,6 +219,15 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public V_ProjectNameAndIDDataTable V_ProjectNameAndID {
+            get {
+                return this.tableV_ProjectNameAndID;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -299,6 +313,9 @@ namespace BLL {
                 if ((ds.Tables["UserRelationShip"] != null)) {
                     base.Tables.Add(new UserRelationShipDataTable(ds.Tables["UserRelationShip"]));
                 }
+                if ((ds.Tables["V_ProjectNameAndID"] != null)) {
+                    base.Tables.Add(new V_ProjectNameAndIDDataTable(ds.Tables["V_ProjectNameAndID"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -383,6 +400,12 @@ namespace BLL {
                     this.tableUserRelationShip.InitVars();
                 }
             }
+            this.tableV_ProjectNameAndID = ((V_ProjectNameAndIDDataTable)(base.Tables["V_ProjectNameAndID"]));
+            if ((initTable == true)) {
+                if ((this.tableV_ProjectNameAndID != null)) {
+                    this.tableV_ProjectNameAndID.InitVars();
+                }
+            }
             this.relationFK_User_User = this.Relations["FK_User_User"];
             this.relationFK_Donation_User = this.Relations["FK_Donation_User"];
             this.relationFK_Donation_Project = this.Relations["FK_Donation_Project"];
@@ -420,6 +443,8 @@ namespace BLL {
             base.Tables.Add(this.tableV_FormatedUser);
             this.tableUserRelationShip = new UserRelationShipDataTable();
             base.Tables.Add(this.tableUserRelationShip);
+            this.tableV_ProjectNameAndID = new V_ProjectNameAndIDDataTable();
+            base.Tables.Add(this.tableV_ProjectNameAndID);
             this.relationFK_User_User = new System.Data.DataRelation("FK_User_User", new System.Data.DataColumn[] {
                         this.tableUser.UserIDColumn}, new System.Data.DataColumn[] {
                         this.tableUser.FatherUserIDColumn}, false);
@@ -508,6 +533,11 @@ namespace BLL {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeV_ProjectNameAndID() {
+            return false;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -544,6 +574,8 @@ namespace BLL {
         public delegate void V_FormatedUserRowChangeEventHandler(object sender, V_FormatedUserRowChangeEvent e);
         
         public delegate void UserRelationShipRowChangeEventHandler(object sender, UserRelationShipRowChangeEvent e);
+        
+        public delegate void V_ProjectNameAndIDRowChangeEventHandler(object sender, V_ProjectNameAndIDRowChangeEvent e);
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [System.Serializable()]
@@ -3357,6 +3389,215 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class V_ProjectNameAndIDDataTable : System.Data.DataTable, System.Collections.IEnumerable {
+            
+            private System.Data.DataColumn columnProjectID;
+            
+            private System.Data.DataColumn columnName;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDDataTable() {
+                this.TableName = "V_ProjectNameAndID";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_ProjectNameAndIDDataTable(System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected V_ProjectNameAndIDDataTable(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn ProjectIDColumn {
+                get {
+                    return this.columnProjectID;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDRow this[int index] {
+                get {
+                    return ((V_ProjectNameAndIDRow)(this.Rows[index]));
+                }
+            }
+            
+            public event V_ProjectNameAndIDRowChangeEventHandler V_ProjectNameAndIDRowChanging;
+            
+            public event V_ProjectNameAndIDRowChangeEventHandler V_ProjectNameAndIDRowChanged;
+            
+            public event V_ProjectNameAndIDRowChangeEventHandler V_ProjectNameAndIDRowDeleting;
+            
+            public event V_ProjectNameAndIDRowChangeEventHandler V_ProjectNameAndIDRowDeleted;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddV_ProjectNameAndIDRow(V_ProjectNameAndIDRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDRow AddV_ProjectNameAndIDRow(string Name) {
+                V_ProjectNameAndIDRow rowV_ProjectNameAndIDRow = ((V_ProjectNameAndIDRow)(this.NewRow()));
+                rowV_ProjectNameAndIDRow.ItemArray = new object[] {
+                        null,
+                        Name};
+                this.Rows.Add(rowV_ProjectNameAndIDRow);
+                return rowV_ProjectNameAndIDRow;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override System.Data.DataTable Clone() {
+                V_ProjectNameAndIDDataTable cln = ((V_ProjectNameAndIDDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataTable CreateInstance() {
+                return new V_ProjectNameAndIDDataTable();
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnProjectID = base.Columns["ProjectID"];
+                this.columnName = base.Columns["Name"];
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnProjectID = new System.Data.DataColumn("ProjectID", typeof(int), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProjectID);
+                this.columnName = new System.Data.DataColumn("Name", typeof(string), null, System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnProjectID.AutoIncrement = true;
+                this.columnProjectID.AllowDBNull = false;
+                this.columnProjectID.ReadOnly = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 100;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDRow NewV_ProjectNameAndIDRow() {
+                return ((V_ProjectNameAndIDRow)(this.NewRow()));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Data.DataRow NewRowFromBuilder(System.Data.DataRowBuilder builder) {
+                return new V_ProjectNameAndIDRow(builder);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override System.Type GetRowType() {
+                return typeof(V_ProjectNameAndIDRow);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.V_ProjectNameAndIDRowChanged != null)) {
+                    this.V_ProjectNameAndIDRowChanged(this, new V_ProjectNameAndIDRowChangeEvent(((V_ProjectNameAndIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.V_ProjectNameAndIDRowChanging != null)) {
+                    this.V_ProjectNameAndIDRowChanging(this, new V_ProjectNameAndIDRowChangeEvent(((V_ProjectNameAndIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.V_ProjectNameAndIDRowDeleted != null)) {
+                    this.V_ProjectNameAndIDRowDeleted(this, new V_ProjectNameAndIDRowChangeEvent(((V_ProjectNameAndIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.V_ProjectNameAndIDRowDeleting != null)) {
+                    this.V_ProjectNameAndIDRowDeleting(this, new V_ProjectNameAndIDRowChangeEvent(((V_ProjectNameAndIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveV_ProjectNameAndIDRow(V_ProjectNameAndIDRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(System.Xml.Schema.XmlSchemaSet xs) {
+                System.Xml.Schema.XmlSchemaComplexType type = new System.Xml.Schema.XmlSchemaComplexType();
+                System.Xml.Schema.XmlSchemaSequence sequence = new System.Xml.Schema.XmlSchemaSequence();
+                VCFDataSet ds = new VCFDataSet();
+                xs.Add(ds.GetSchemaSerializable());
+                System.Xml.Schema.XmlSchemaAny any1 = new System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                System.Xml.Schema.XmlSchemaAny any2 = new System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                System.Xml.Schema.XmlSchemaAttribute attribute1 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                System.Xml.Schema.XmlSchemaAttribute attribute2 = new System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "V_ProjectNameAndIDDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                return type;
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class CityRow : System.Data.DataRow {
             
             private CityDataTable tableCity;
@@ -4715,6 +4956,38 @@ namespace BLL {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class V_ProjectNameAndIDRow : System.Data.DataRow {
+            
+            private V_ProjectNameAndIDDataTable tableV_ProjectNameAndID;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal V_ProjectNameAndIDRow(System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableV_ProjectNameAndID = ((V_ProjectNameAndIDDataTable)(this.Table));
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ProjectID {
+                get {
+                    return ((int)(this[this.tableV_ProjectNameAndID.ProjectIDColumn]));
+                }
+                set {
+                    this[this.tableV_ProjectNameAndID.ProjectIDColumn] = value;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableV_ProjectNameAndID.NameColumn]));
+                }
+                set {
+                    this[this.tableV_ProjectNameAndID.NameColumn] = value;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public class CityRowChangeEvent : System.EventArgs {
             
             private CityRow eventRow;
@@ -4953,6 +5226,34 @@ namespace BLL {
             
             [System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public UserRelationShipRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class V_ProjectNameAndIDRowChangeEvent : System.EventArgs {
+            
+            private V_ProjectNameAndIDRow eventRow;
+            
+            private System.Data.DataRowAction eventAction;
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDRowChangeEvent(V_ProjectNameAndIDRow row, System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public V_ProjectNameAndIDRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5410,13 +5711,13 @@ SELECT DonationID, DonationUserID, BankAccount, Money, DonationDate, ProjectID F
             this._commandCollection[0].CommandType = System.Data.CommandType.Text;
             this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[Donation] ([DonationUserID], [BankAccount], [Money], [ProjectI" +
-                "D]) VALUES (@DonationUserID, @BankAccount, @Money, @ProjectID);";
-            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DonationUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "DonationUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@BankAccount", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "BankAccount", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].CommandText = "dbo.Donate";
+            this._commandCollection[1].CommandType = System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DonationUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@BankAccount", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 19, 4, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5572,17 +5873,32 @@ SELECT DonationID, DonationUserID, BankAccount, Money, DonationDate, ProjectID F
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int Donor(int DonationUserID, string BankAccount, decimal Money, int ProjectID) {
+        public virtual int Donate(System.Nullable<int> DonationUserID, string BankAccount, System.Nullable<decimal> Money, System.Nullable<int> ProjectID) {
             System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(DonationUserID));
-            if ((BankAccount == null)) {
-                throw new System.ArgumentNullException("BankAccount");
+            if ((DonationUserID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(DonationUserID.Value));
             }
             else {
-                command.Parameters[1].Value = ((string)(BankAccount));
+                command.Parameters[1].Value = System.DBNull.Value;
             }
-            command.Parameters[2].Value = ((decimal)(Money));
-            command.Parameters[3].Value = ((int)(ProjectID));
+            if ((BankAccount == null)) {
+                command.Parameters[2].Value = System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(BankAccount));
+            }
+            if ((Money.HasValue == true)) {
+                command.Parameters[3].Value = ((decimal)(Money.Value));
+            }
+            else {
+                command.Parameters[3].Value = System.DBNull.Value;
+            }
+            if ((ProjectID.HasValue == true)) {
+                command.Parameters[4].Value = ((int)(ProjectID.Value));
+            }
+            else {
+                command.Parameters[4].Value = System.DBNull.Value;
+            }
             System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & System.Data.ConnectionState.Open) 
                         != System.Data.ConnectionState.Open)) {
@@ -5847,7 +6163,7 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Reg" +
@@ -5897,30 +6213,40 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
             this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FatherUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FatherUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "dbo.GetTopNSystemUserWhereRealNameStartWith";
-            this._commandCollection[3].CommandType = System.Data.CommandType.StoredProcedure;
-            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RealName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Count", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].CommandText = @"SELECT InferiorUserID AS UserID, iUserName AS UserName, ProjectID, Role, Photo, 
+      RegDate, RealName, Sex, Age, Tel, Email, Address, Comment, BankAccount, 
+      IdentityCard, Position, FatherUserID, Password, SecureQuestion, SecureAnswer
+FROM V_UserRelationshipWithInferiorDetail
+WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
+            this._commandCollection[3].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, \r\n " +
+            this._commandCollection[4].CommandText = "dbo.GetTopNSystemUserWhereRealNameStartWith";
+            this._commandCollection[4].CommandType = System.Data.CommandType.StoredProcedure;
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RealName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Count", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, \r\n " +
                 "     RegDate, RealName, Sex, Age, Tel, Email, Address, Comment, BankAccount, \r\n " +
                 "     IdentityCard, Position, FatherUserID\r\nFROM [User]\r\nWHERE (UserID = @UserID)" +
                 "";
-            this._commandCollection[4].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT * FROM dbo.[User]\r\nwhere\r\n(UserName=@UserName);";
             this._commandCollection[5].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT *\r\nFROM dbo.[User]\r\nwhere ( UserName=@UserName and Password=@Password)";
+            this._commandCollection[6].CommandText = "SELECT * FROM dbo.[User]\r\nwhere\r\n(UserName=@UserName);";
             this._commandCollection[6].CommandType = System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Password", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "Password", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "SELECT *\r\nFROM dbo.[User]\r\nwhere ( UserName=@UserName and Password=@Password)";
+            this._commandCollection[7].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Password", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "Password", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5948,8 +6274,20 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual VCFDataSet.UserDataTable GetTopNSystemUserWhereRealNameStartWith(string RealName, System.Nullable<int> Count) {
+        public virtual VCFDataSet.UserDataTable GetInferiorBySuperiorUserAndProject(int SuperiorUserID, int ProjectID) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SuperiorUserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
+            VCFDataSet.UserDataTable dataTable = new VCFDataSet.UserDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.UserDataTable GetTopNSystemUserWhereRealNameStartWith(string RealName, System.Nullable<int> Count) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((RealName == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = System.DBNull.Value;
             }
@@ -5971,7 +6309,7 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable GetUserByUserID(int UserID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
             VCFDataSet.UserDataTable dataTable = new VCFDataSet.UserDataTable();
             this.Adapter.Fill(dataTable);
@@ -5982,7 +6320,7 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable GetUserByUserName(string UserName) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             if ((UserName == null)) {
                 throw new System.ArgumentNullException("UserName");
             }
@@ -5998,7 +6336,7 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable Login(string UserName, string Password) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((UserName == null)) {
                 throw new System.ArgumentNullException("UserName");
             }
@@ -7443,7 +7781,7 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
@@ -7456,14 +7794,41 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
             this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [Purpose], [ProjectID], [DistributionDate], [Money], [FeedbackStatus]) VALUES (@FromUserID, -1, 2, @Purpose, @ProjectID, @DistributionDate, @Money, 1);
-SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeedbackStatus FROM Distribution WHERE (DistributionID = SCOPE_IDENTITY())";
+            this._commandCollection[2].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
+                ", DistributionDate, Money, FeedbackStatus FROM dbo.Distribution\r\nwhere \r\n(\r\nToUs" +
+                "erID=@ToUserID \r\nAND ProjectID=@ProjectID\r\n\r\n)";
             this._commandCollection[2].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 2147483647, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 8, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID" +
+                ", DistributionDate, Money, FeedbackStatus FROM dbo.Distribution\r\nwhere \r\n(\r\nFrom" +
+                "UserID=@FromUserID \r\nAND ProjectID=@ProjectID\r\n\r\n)";
+            this._commandCollection[3].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [Purpose], [ProjectID], [DistributionDate], [Money], [FeedbackStatus]) VALUES (@FromUserID, -1, 2, @Purpose, @ProjectID, @DistributionDate, @Money, 1);
+SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectID, DistributionDate, Money, FeedbackStatus FROM Distribution WHERE (DistributionID = SCOPE_IDENTITY())";
+            this._commandCollection[4].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 2147483647, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@DistributionDate", System.Data.SqlDbType.DateTime, 8, System.Data.ParameterDirection.Input, 0, 0, "DistributionDate", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "INSERT INTO [dbo].[Distribution] ([FromUserID], [ToUserID], [DistributionType], [" +
+                "Purpose], [ProjectID], [Money], [FeedbackStatus]) VALUES (@FromUserID, @ToUserID" +
+                ", 1, @Purpose, @ProjectID, @Money, 1);";
+            this._commandCollection[5].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FromUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FromUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ToUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ToUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Purpose", System.Data.SqlDbType.Text, 2147483647, System.Data.ParameterDirection.Input, 0, 0, "Purpose", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Money", System.Data.SqlDbType.Money, 8, System.Data.ParameterDirection.Input, 0, 0, "Money", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7507,6 +7872,30 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         public virtual VCFDataSet.DistributionDataTable GetProjectIDByToUser(int ToUserID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ToUserID));
+            VCFDataSet.DistributionDataTable dataTable = new VCFDataSet.DistributionDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.DistributionDataTable GetDistributionByToUserID_ProjectID(int ToUserID, int ProjectID) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ToUserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
+            VCFDataSet.DistributionDataTable dataTable = new VCFDataSet.DistributionDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.DistributionDataTable GetDistrubutionByFromUserID_ProjectID(int FromUserID, int ProjectID) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(FromUserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
             VCFDataSet.DistributionDataTable dataTable = new VCFDataSet.DistributionDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7661,7 +8050,7 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertDistributionFeedback(int FromUserID, string Purpose, int ProjectID, System.DateTime DistributionDate, decimal Money) {
-            System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             command.Parameters[0].Value = ((int)(FromUserID));
             if ((Purpose == null)) {
                 throw new System.ArgumentNullException("Purpose");
@@ -7671,6 +8060,38 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
             }
             command.Parameters[2].Value = ((int)(ProjectID));
             command.Parameters[3].Value = ((System.DateTime)(DistributionDate));
+            command.Parameters[4].Value = ((decimal)(Money));
+            System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int MangerDistribe(int FromUserID, int ToUserID, string Purpose, int ProjectID, decimal Money) {
+            System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            command.Parameters[0].Value = ((int)(FromUserID));
+            command.Parameters[1].Value = ((int)(ToUserID));
+            if ((Purpose == null)) {
+                throw new System.ArgumentNullException("Purpose");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Purpose));
+            }
+            command.Parameters[3].Value = ((int)(ProjectID));
             command.Parameters[4].Value = ((decimal)(Money));
             System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & System.Data.ConnectionState.Open) 
@@ -8313,11 +8734,19 @@ SELECT SuperiorUserID, InferiorUserID, ProjectID FROM UserRelationShip WHERE (In
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT SuperiorUserID, InferiorUserID, ProjectID FROM dbo.UserRelationShip";
             this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[UserRelationShip] ([SuperiorUserID], [InferiorUserID], [Projec" +
+                "tID]) VALUES (@SuperiorUserID, @InferiorUserID, @ProjectID);";
+            this._commandCollection[1].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@InferiorUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "InferiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8437,6 +8866,181 @@ SELECT SuperiorUserID, InferiorUserID, ProjectID FROM UserRelationShip WHERE (In
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int AddRelationship(int SuperiorUserID, int InferiorUserID, int ProjectID) {
+            System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(SuperiorUserID));
+            command.Parameters[1].Value = ((int)(InferiorUserID));
+            command.Parameters[2].Value = ((int)(ProjectID));
+            System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & System.Data.ConnectionState.Open) 
+                        != System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.ToolboxItem(true)]
+    [System.ComponentModel.DataObjectAttribute(true)]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class V_ProjectNameAndIDTableAdapter : System.ComponentModel.Component {
+        
+        private System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private System.Data.SqlClient.SqlConnection _connection;
+        
+        private System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public V_ProjectNameAndIDTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new System.Data.SqlClient.SqlDataAdapter();
+            System.Data.Common.DataTableMapping tableMapping = new System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "V_ProjectNameAndID";
+            tableMapping.ColumnMappings.Add("ProjectID", "ProjectID");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BLL.Properties.Settings.Default.VCFConnectionString1;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ProjectID, Name FROM dbo.V_ProjectNameAndID";
+            this._commandCollection[0].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "dbo.GetProjectRelatedToUser";
+            this._commandCollection[1].CommandType = System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(VCFDataSet.V_ProjectNameAndIDDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual VCFDataSet.V_ProjectNameAndIDDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            VCFDataSet.V_ProjectNameAndIDDataTable dataTable = new VCFDataSet.V_ProjectNameAndIDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.V_ProjectNameAndIDDataTable GetProjectOfUser(System.Nullable<int> UserID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((UserID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(UserID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = System.DBNull.Value;
+            }
+            VCFDataSet.V_ProjectNameAndIDDataTable dataTable = new VCFDataSet.V_ProjectNameAndIDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
 }

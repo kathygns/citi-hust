@@ -23,7 +23,7 @@ public partial class Controls_UserChooserControl : System.Web.UI.UserControl
     {
         get
         {
-            Regex r = new Regex(@".+[(.+)]");
+            Regex r = new Regex(@".+\[(.+)\]");
             string tmp=r.Match(this.UserTextBox.Text).Groups[1].Value;//得到UserName
 
             

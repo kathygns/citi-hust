@@ -15,7 +15,9 @@
         <br />
         <br />
         <br />
-        &nbsp;</div>
+        <br />
+        &nbsp;<asp:Button ID="DistributionButton" runat="server" OnClick="DistributionButton_Click"
+            Text="DistributionButton" /></div>
     </form>
 </body>
 </html>

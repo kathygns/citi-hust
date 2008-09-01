@@ -16,6 +16,8 @@ public partial class Controls_ProjectChooserControl : System.Web.UI.UserControl
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        if (IsPostBack)
+            return;
         DropDownList1.Items.Clear();
 
         BLL.VCFDataSet.ProjectDataTable pdt=new BLL.VCFDataSetTableAdapters.ProjectTableAdapter ().GetAllProject();

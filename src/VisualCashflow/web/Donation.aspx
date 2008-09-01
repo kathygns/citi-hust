@@ -84,7 +84,7 @@
             </InsertItemTemplate>
             
         </asp:FormView>
-        <asp:ObjectDataSource ID="DonorDataSource" runat="server" DeleteMethod="Delete" InsertMethod="Donor"
+        <asp:ObjectDataSource ID="DonorDataSource" runat="server" DeleteMethod="Delete" InsertMethod="Donate"
             OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="BLL.VCFDataSetTableAdapters.DonationTableAdapter"
             UpdateMethod="Update">
             
