@@ -31,10 +31,24 @@
 
 </nobr>
     </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
     
     
+
+        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ProjectDataSource">
+        <ItemTemplate>
+            <asp:HyperLink ID="ProjectLink" runat="server" Text='<%#Eval("Name")%>' NavigateUrl='<%#Eval("ProjectID","UserManagement.aspx?ProjectID={0}")%>'>  </asp:HyperLink>
+        </ItemTemplate>
+        </asp:Repeater>
+        <asp:ObjectDataSource ID="ProjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetProjectOfUser" TypeName="BLL.VCFDataSetTableAdapters.V_ProjectNameAndIDTableAdapter">
+        </asp:ObjectDataSource>
+        
+        
+        
+        
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
-            DataSourceID="UserDataSource" ForeColor="#333333" GridLines="None">
+             ForeColor="#333333" GridLines="None">
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <Columns>
                 <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" />

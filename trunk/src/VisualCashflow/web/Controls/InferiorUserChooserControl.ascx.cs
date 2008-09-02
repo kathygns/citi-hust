@@ -15,9 +15,18 @@ public partial class Controls_InferiorUserChooserControl : System.Web.UI.UserCon
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetInferiorBySuperiorUserAndProject(uid, pid);
+
+        int uid=new App_Code.SessionManager(this.Page).Manager.UserID;
+        int pid=Convert.ToInt32( Request.QueryString["ProjectID"]);
+
+
+        //BLL.VCFDataSet.UserDataTable udt = new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetInferiorBySuperiorUserAndProject(uid, pid);
+        BLL.VCFDataSet.V_FormatedUserDataTable vfudt = new BLL.VCFDataSetTableAdapters.V_FormatedUserTableAdapter().GetInferiorBySuperiorUserAndProject(uid, pid);
+
+
+
         DropDownList1.Items.Clear();
-        foreach (BLL.VCFDataSet.UserRow r in udt )
+        foreach (BLL.VCFDataSet.V_FormatedUserRow r in vfudt )
         {
             DropDownList1.Items.Add(new ListItem(r.UserName, r.UserID.ToString()));
         }
@@ -26,7 +35,7 @@ public partial class Controls_InferiorUserChooserControl : System.Web.UI.UserCon
 
 
     #region Attributes
-
+    /*
     private int uid;
     private int pid;
 
@@ -46,7 +55,7 @@ public partial class Controls_InferiorUserChooserControl : System.Web.UI.UserCon
             this.pid = value;
         }
     }
-
+    */
     public int InferiorUserID
     {
         get{
