@@ -16,14 +16,30 @@ public partial class UserManagement : System.Web.UI.Page
     {
 
         int uid=new App_Code.SessionManager(this).User.UserID;
+                    //TODO:出错处理（如果request没有projectID）
+        int pid=Convert.ToInt32(Request.QueryString["ProjectID"]);
+        
+        
+        ProjectDataSource.SelectParameters.Add("UserID", uid.ToString());
+
+
         if(null==Request.QueryString["Role"])
         {
-            UserDataSource.SelectMethod = "GetInferiorBySuperiorUserAndProject";
-            UserDataSource.SelectParameters.Clear();
-            UserDataSource.SelectParameters.Add("SuperiorUserID", uid.ToString());
 
-            //TODO:出错处理（如果request没有projectID）
-            UserDataSource.SelectParameters.Add("ProjectID", Request.QueryString["ProjectID"]);
+            //BLL.VCFDataSet.UserDataTable udt=new BLL.VCFDataSetTableAdapters.UserTableAdapter().GetInferiorBySuperiorUserAndProject(uid,pid);
+
+
+
+            BLL.VCFDataSet.V_FormatedUserDataTable vfudt = new BLL.VCFDataSetTableAdapters.V_FormatedUserTableAdapter().GetInferiorBySuperiorUserAndProject(uid, pid);
+            /*
+            Response.Write("uid:" + uid);//TO DO:DEBUG
+            Response.Write("pid:" + pid+" ");//TO DO:DEBUG
+
+            Response.Write(vfudt.Count);//TO DO:DEBUG
+             */ 
+            GridView1.DataSource=vfudt;
+
+            GridView1.DataBind();
         }
 
     }

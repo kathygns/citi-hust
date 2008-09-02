@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
     <div>
         <uc1:HeaderControl ID="HeaderControl1" runat="server" />
-        用tab
+        TODO:用tab
         <br />
         
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ProjectDataSource">
@@ -25,6 +25,9 @@
         </asp:Repeater>
         <asp:ObjectDataSource ID="ProjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetProjectOfUser" TypeName="BLL.VCFDataSetTableAdapters.V_ProjectNameAndIDTableAdapter">
         </asp:ObjectDataSource>
+        
+        
+        
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="DistributionID"
             DataSourceID="DistributionDataSource">
             <Columns>
@@ -156,16 +159,13 @@
         
        
     </div>
-        <asp:FormView ID="FormView1" runat="server" DataKeyNames="DistributionID" DataSourceID="DistributionDataSourceForOutput"
-            DefaultMode="Insert">
-          
-            <InsertItemTemplate>
-                <table>
+        
+          <table>
                     <tr>
                         <td style="width: 221px">
                             选择下级管理员</td>
                         <td style="width: 100px">
-                            <uc2:InferiorUserChooserControl ID="InferiorUserChooserControl1"  InferiorUserId='<%# Bind("ToUserID") %>' runat="server" />
+                            <uc2:InferiorUserChooserControl ID="ToUserChooserControl"  runat="server" />
                         </td>
                         <td style="width: 100px">
                         </td>
@@ -174,7 +174,7 @@
                         <td style="width: 221px">
                             金额</td>
                         <td style="width: 100px">
-                            <asp:TextBox ID="MoneyTextBox" runat="server" Text='<%# Bind("Money") %>'></asp:TextBox></td>
+                            <asp:TextBox ID="MoneyTextBox" runat="server" ></asp:TextBox></td>
                         <td style="width: 100px">
                         </td>
                     </tr>
@@ -182,20 +182,21 @@
                         <td style="width: 221px">
                             资金用途</td>
                         <td style="width: 100px">
-                            <asp:TextBox ID="PurposeTextBox" runat="server" Text='<%# Bind("Purpose") %>'></asp:TextBox></td>
+                            <asp:TextBox ID="PurposeTextBox" runat="server" ></asp:TextBox></td>
                         <td style="width: 100px">
                         </td>
                     </tr>
                 </table>
-                <asp:TextBox ID="FromUserIDTextBox" runat="server" Text='<%# Bind("FromUserID") %>'></asp:TextBox><asp:TextBox
-                    ID="ProjectIDTextBox" runat="server" Text='<%# Bind("ProjectID") %>'></asp:TextBox><br />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
-                    Text="分配"></asp:LinkButton>
+                <asp:TextBox ID="FromUserIDTextBox" runat="server" ></asp:TextBox>
+                
+                
+                <asp:TextBox      ID="ProjectIDTextBox" runat="server" ></asp:TextBox><br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
+                    Text="分配" OnClick="InsertButton_Click"></asp:LinkButton>
                 <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
                     Text="取消"></asp:LinkButton>
-            </InsertItemTemplate>
-          
-        </asp:FormView>
+                    
+                    
     </form>
 </body>
 </html>

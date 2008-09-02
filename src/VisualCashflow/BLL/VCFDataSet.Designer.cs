@@ -6163,7 +6163,7 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[8];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Reg" +
@@ -6213,40 +6213,30 @@ SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, Re
             this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@FatherUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "FatherUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT InferiorUserID AS UserID, iUserName AS UserName, ProjectID, Role, Photo, 
-      RegDate, RealName, Sex, Age, Tel, Email, Address, Comment, BankAccount, 
-      IdentityCard, Position, FatherUserID, Password, SecureQuestion, SecureAnswer
-FROM V_UserRelationshipWithInferiorDetail
-WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
-            this._commandCollection[3].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].CommandText = "dbo.GetTopNSystemUserWhereRealNameStartWith";
+            this._commandCollection[3].CommandType = System.Data.CommandType.StoredProcedure;
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RealName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Count", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "dbo.GetTopNSystemUserWhereRealNameStartWith";
-            this._commandCollection[4].CommandType = System.Data.CommandType.StoredProcedure;
-            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@RealName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Count", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, null, System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, \r\n " +
+            this._commandCollection[4].CommandText = "SELECT UserID, UserName, Password, SecureQuestion, SecureAnswer, Role, Photo, \r\n " +
                 "     RegDate, RealName, Sex, Age, Tel, Email, Address, Comment, BankAccount, \r\n " +
                 "     IdentityCard, Position, FatherUserID\r\nFROM [User]\r\nWHERE (UserID = @UserID)" +
                 "";
+            this._commandCollection[4].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT * FROM dbo.[User]\r\nwhere\r\n(UserName=@UserName);";
             this._commandCollection[5].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT * FROM dbo.[User]\r\nwhere\r\n(UserName=@UserName);";
+            this._commandCollection[6].CommandText = "SELECT *\r\nFROM dbo.[User]\r\nwhere ( UserName=@UserName and Password=@Password)";
             this._commandCollection[6].CommandType = System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7] = new System.Data.SqlClient.SqlCommand();
-            this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT *\r\nFROM dbo.[User]\r\nwhere ( UserName=@UserName and Password=@Password)";
-            this._commandCollection[7].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "UserName", System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Password", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "Password", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Password", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, "Password", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6274,20 +6264,8 @@ WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual VCFDataSet.UserDataTable GetInferiorBySuperiorUserAndProject(int SuperiorUserID, int ProjectID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SuperiorUserID));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
-            VCFDataSet.UserDataTable dataTable = new VCFDataSet.UserDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable GetTopNSystemUserWhereRealNameStartWith(string RealName, System.Nullable<int> Count) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((RealName == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = System.DBNull.Value;
             }
@@ -6309,7 +6287,7 @@ WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable GetUserByUserID(int UserID) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
             VCFDataSet.UserDataTable dataTable = new VCFDataSet.UserDataTable();
             this.Adapter.Fill(dataTable);
@@ -6320,7 +6298,7 @@ WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable GetUserByUserName(string UserName) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((UserName == null)) {
                 throw new System.ArgumentNullException("UserName");
             }
@@ -6336,7 +6314,7 @@ WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.UserDataTable Login(string UserName, string Password) {
-            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             if ((UserName == null)) {
                 throw new System.ArgumentNullException("UserName");
             }
@@ -8539,7 +8517,7 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
@@ -8548,18 +8526,28 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
             this._commandCollection[0].CommandType = System.Data.CommandType.Text;
             this._commandCollection[1] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
-                "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, RoleString, FatherU" +
-                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where (Role=@Role)";
+            this._commandCollection[1].CommandText = @"SELECT SuperiorUserID, InferiorUserID, ProjectID, UserID, UserName, Photo, RegDate, 
+      RealName, Age, Tel, Email, Address, Comment, BankAccount, IdentityCard, Position, 
+      FatherUserID, Sex, RoleString, FatherUserName, FatherRealName, Role
+FROM V_UserRelationshipWithInferiorDetail
+WHERE (SuperiorUserID = @SuperiorUserID) AND (ProjectID = @ProjectID)";
             this._commandCollection[1].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Role", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "Role", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@SuperiorUserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "SuperiorUserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new System.Data.SqlClient.SqlParameter("@ProjectID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "ProjectID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
                 "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, RoleString, FatherU" +
-                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where UserID=@UserID";
+                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where (Role=@Role)";
             this._commandCollection[2].CommandType = System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new System.Data.SqlClient.SqlParameter("@Role", System.Data.SqlDbType.TinyInt, 1, System.Data.ParameterDirection.Input, 0, 0, "Role", System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT UserID, UserName, Photo, RegDate, RealName, Age, Tel, Email, Address, Comm" +
+                "ent, BankAccount, IdentityCard, Position, FatherUserID, Sex, RoleString, FatherU" +
+                "serName, FatherRealName, Role FROM dbo.V_FormatedUser where UserID=@UserID";
+            this._commandCollection[3].CommandType = System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new System.Data.SqlClient.SqlParameter("@UserID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "UserID", System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8586,9 +8574,35 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(VCFDataSet.V_FormatedUserDataTable dataTable, int SuperiorUserID, int ProjectID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SuperiorUserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual VCFDataSet.V_FormatedUserDataTable GetInferiorBySuperiorUserAndProject(int SuperiorUserID, int ProjectID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(SuperiorUserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ProjectID));
+            VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.V_FormatedUserDataTable GetUserByRole(int Role) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Role));
             VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
             this.Adapter.Fill(dataTable);
@@ -8599,7 +8613,7 @@ SELECT DistributionID, FromUserID, ToUserID, DistributionType, Purpose, ProjectI
         [System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual VCFDataSet.V_FormatedUserDataTable GetUserByUserID(int UserID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(UserID));
             VCFDataSet.V_FormatedUserDataTable dataTable = new VCFDataSet.V_FormatedUserDataTable();
             this.Adapter.Fill(dataTable);

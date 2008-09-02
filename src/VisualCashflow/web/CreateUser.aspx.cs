@@ -14,6 +14,9 @@ public partial class Register : System.Web.UI.Page, ICallbackEventHandler
     protected void Page_Load(object sender, EventArgs e)
     {
         //new App_Code.SessionManager(this).
+
+        (FormView1.FindControl("FatherUserIDTextBox") as TextBox).Text = new App_Code.SessionManager(this).User.UserID;
+
     }
 
 
